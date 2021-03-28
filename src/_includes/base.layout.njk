@@ -33,97 +33,109 @@
     </header>
 
     <main class="mt-14">
-      <div class="__section-gray">
-        <div class="pb-12">
-          <img
-            class="object-cover w-48 h-48 mx-auto rounded-full shadow-lg"
-            src="images/profile.jpg"
-            alt=""
-          />
-        </div>
-        <div class="w-4/5">
-          <h2>Let your projects fly</h2>
-          <p>
-            Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
-            doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
-            excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
-            ipsa eum ratione molestias?
-          </p>
-          <div class="flex mt-6 space-x-4">
-            <button class="flex-1 text-blue-700 bg-blue-100">Contact me</button>
-            <button class="flex-1 text-white bg-blue-700">Portfolio &rarr;</button>
+      <section class="__introduction">
+        <div class="__section-gray">
+          <div class="pb-12">
+            <img
+              class="object-cover w-48 h-48 mx-auto rounded-full shadow-lg"
+              src="images/profile.jpg"
+              alt=""
+            />
+          </div>
+          <div class="w-4/5">
+            <h2>Let your projects fly</h2>
+            <p>
+              Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
+              doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
+              excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
+              ipsa eum ratione molestias?
+            </p>
+            <div class="flex mt-6 space-x-4">
+              <button class="flex-1 text-blue-700 bg-blue-100">Contact me</button>
+              <button class="flex-1 text-white bg-blue-700">Portfolio &rarr;</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="__section-white">
-        <div class="w-4/5 ml-auto">
-          <h2>Lorem impsum dolor sit amet</h2>
-          <p>
-            Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
-            doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
-            excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
-            ipsa eum ratione molestias?
-          </p>
-        </div>
-      </div>
-
-      <div class="__section-gray">
-        <div class="w-4/5">
-          <h2>Lorem impsum dolor sit amet</h2>
-          <p>
-            Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
-            doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
-            excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
-            ipsa eum ratione molestias?
-          </p>
-        </div>
-      </div>
-
-      <div class="px-4 py-4 overflow-hidden">
-        <div class="__terminal">
-          <div class="flex pb-4 space-x-2">
-            <div class="w-4 h-4 bg-red-500 rounded-full"></div>
-            <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
-            <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+        <div class="__section-white">
+          <div class="w-4/5 ml-auto">
+            <h2>Lorem impsum dolor sit amet</h2>
+            <p>
+              Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
+              doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
+              excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
+              ipsa eum ratione molestias?
+            </p>
           </div>
-          <pre class="max-h-96"><code>{% raw %}const [styleSlider, setStyleSlider] = useSprings(
-  ProfileData.photoMetas.length,
-  i => ({
-    // check for window to support ssr
-    x: i * (typeof window !== `undefined` ? window.innerWidth : 0),
-    sc: 1,
-    display: "block",
-  })
-)
-useWindowEventListener("resize", () => moveSliderTo())
+        </div>
 
-const moveSliderTo = (idx?: number) => {
-  if (typeof idx !== "undefined") {
-    setImageIdx(idx)
-  }
+        <div class="__section-gray">
+          <div class="w-4/5">
+            <h2>Lorem impsum dolor sit amet</h2>
+            <p>
+              Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
+              doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
+              excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
+              ipsa eum ratione molestias?
+            </p>
+          </div>
+        </div>
 
-  setStyleSlider(i => {
-    if (i < overlayedPhotoIndexRef.current - 1 || i > overlayedPhotoIndexRef.current + 1) {
-      return { display: "none" }
-    }
-
-    return {
-      x: (i - overlayedPhotoIndexRef.current) * window.innerWidth,
+        <div class="px-4 py-4 overflow-hidden">
+          <div class="__terminal">
+            <div class="flex pb-4 space-x-2">
+              <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+              <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+              <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+            </div>
+            <pre class="max-h-96"><code>{% raw %}const [styleSlider, setStyleSlider] = useSprings(
+    ProfileData.photoMetas.length,
+    i => ({
+      // check for window to support ssr
+      x: i * (typeof window !== `undefined` ? window.innerWidth : 0),
       sc: 1,
       display: "block",
+    })
+  )
+  useWindowEventListener("resize", () => moveSliderTo())
+
+  const moveSliderTo = (idx?: number) => {
+    if (typeof idx !== "undefined") {
+      setImageIdx(idx)
     }
-  })
-}
-          {% endraw %}</code></pre>
+
+    setStyleSlider(i => {
+      if (i < overlayedPhotoIndexRef.current - 1 || i > overlayedPhotoIndexRef.current + 1) {
+        return { display: "none" }
+      }
+
+      return {
+        x: (i - overlayedPhotoIndexRef.current) * window.innerWidth,
+        sc: 1,
+        display: "block",
+      }
+    })
+  }
+            {% endraw %}</code></pre>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- TODO: Bruch hinzufügen; könnte zum Beispiel screenshot von code sein -->
+      <section>
+        <div class="text-center __section-gray">
+          <p class="text-gray-500">What clients said:</p>
+          <blockquote class="mt-8">
+            <p class="font-serif text-3xl italic">&raquo;<span>Cool guy with cool sunglases.</span>&laquo;</p>
+            <footer>
+              <img class="w-10 h-10 mx-auto mt-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=VhR4opO16h&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <div class="mt-2 text-lg font-semibold">Tom Sawyer</div>
+              <div class="text-gray-600">CEO Superduper Company</div>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
 
-      <!-- TODO: Abschnitt mit Testimonials -->
-
-      <div class="px-4 py-12 bg-white sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+      <section class="px-4 py-12 bg-white sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div
           class="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl"
         >
@@ -170,7 +182,7 @@ const moveSliderTo = (idx?: number) => {
             {% endfor %}
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- TODO: Abschnitt mit Preis/Kosten -->
       <!-- TODO: Abschnitt zum Kontaktieren -->
