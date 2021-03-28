@@ -1,5 +1,9 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("images")
+  eleventyConfig.setUseGitIgnore(false)
+  eleventyConfig.addWatchTarget("./src/css")
+
+  eleventyConfig.addPassthroughCopy("./src/images")
+  eleventyConfig.addPassthroughCopy("./src/css")
 
   return {
     dir: {

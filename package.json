@@ -7,9 +7,9 @@
     "start": "run-p --print-label start:*",
     "start:eleventy": "npm run build:eleventy -- --serve",
     "start:postcss": "npm run build:postcss -- --watch",
-    "build": "NODE_ENV=production run-p --print-label build:*",
+    "build": "NODE_ENV=production run-s build:postcss build:eleventy",
     "build:eleventy": "eleventy",
-    "build:postcss": "postcss src/css/global.css -o dist/css/global.css"
+    "build:postcss": "postcss src/scss --dir src/css"
   },
   "repository": {
     "type": "git",
