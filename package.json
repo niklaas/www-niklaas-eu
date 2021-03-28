@@ -6,10 +6,10 @@
   "scripts": {
     "start": "run-p --print-label start:*",
     "start:eleventy": "npm run build:eleventy -- --serve",
-    "start:postcss": "npm run build:postcss -- --watch",
-    "build": "NODE_ENV=production run-s build:postcss build:eleventy",
+    "start:postcss": "postcss src/scss --dir src/css --watch",
+    "build": "NODE_ENV=production run-p --print-label build:postcss build:eleventy",
     "build:eleventy": "eleventy",
-    "build:postcss": "postcss src/scss --dir src/css"
+    "build:postcss": "postcss src/scss --dir dist/css"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/niklaas/www-niklaas-eu#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@tailwindcss/forms": "^0.3.2",
     "autoprefixer": "^10.2.5",
     "cssnano": "^4.1.10",
     "eslint": "^7.23.0",
@@ -31,7 +32,6 @@
     "postcss-cli": "^8.3.1",
     "precss": "^4.0.0",
     "prettier": "^2.2.1",
-    "tailwindcss": "^2.0.4",
-    "@tailwindcss/forms": "^0.3.2"
+    "tailwindcss": "^2.0.4"
   }
 }
