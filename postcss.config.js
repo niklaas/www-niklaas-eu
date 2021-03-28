@@ -3,6 +3,7 @@ module.exports = postcssConfig => {
 
   return {
     plugins: [
+      require('precss'),
       require('tailwindcss')(),
       require('autoprefixer'), // use this via cssnano advanced preset
       production && require('cssnano')({ preset: 'default' }),
