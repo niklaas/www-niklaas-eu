@@ -4,56 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <link
-      href="css/global.css"
-      rel="stylesheet"
-    />
+    <link href="css/global.css" rel="stylesheet" />
     <script src="https://unpkg.com/feather-icons"></script>
 
     <title>Niklaas Baudet von Gersdorff</title>
   </head>
-  <body>
+  <body class="text-gray-800">
     <header>
-      <div class="flex justify-between items-center fixed w-full bg-white h-14 inset-x-0 top-0">
+      <div
+        class="fixed inset-x-0 top-0 z-10 flex items-center justify-between w-full bg-white h-14"
+      >
         <div class="font-medium">
-          <span class="inline-block p-4 font-uppercase sm:hidden">NBvG</span>
-          <span class="p-4 hidden sm:inline-block">Niklaas Baudet von Gersdorff</span>
+          <span class="inline-block p-4 font-uppercase sm:hidden">Niklaas</span>
+          <span class="hidden p-4 sm:inline-block"
+            >Niklaas Baudet von Gersdorff</span
+          >
         </div>
         <ul class="pr-1">
-          <li class="px-3 py-4 inline-block nav-1">Portfolio</li>
-          <li class="px-3 py-4 inline-block nav-2">Contact</li>
-          <li class="px-3 py-4 inline-block nav-3">Blog</li>
+          <li class="inline-block px-3 py-4">Portfolio</li>
+          <li class="inline-block px-3 py-4">Contact</li>
+          <li class="inline-block px-3 py-4">Blog</li>
         </ul>
       </div>
     </header>
 
-    <main>
-      <div class="__section-gray bg-gray-100 px-4 py-12 mt-14">
+    <main class="mt-14">
+      <div class="__section-gray">
         <div class="pb-12">
           <img
-            class="mx-auto shadow-lg rounded-full object-cover w-48 h-48"
+            class="object-cover w-48 h-48 mx-auto rounded-full shadow-lg"
             src="images/profile.jpg"
             alt=""
           />
         </div>
         <div class="w-4/5">
-        <h1 class="pb-4 text-4xl font-serif">Let your projects fly</h1>
+          <h2>Let your projects fly</h2>
           <p>
             Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
             doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
             excepturi deserunt quae Quo deserunt non ullam nesciunt quam. Nisi
             ipsa eum ratione molestias?
           </p>
-          <div class="flex space-x-4 mt-6">
-          <button class="rounded bg-yellow-100 text-yellow-700 text-white text-lg px-4 py-2">Contact Me</button>
-          <button class="rounded bg-yellow-700 text-white text-lg px-4 py-2">Portfolio &rarr;</button>
+          <div class="flex mt-6 space-x-4">
+            <button class="text-blue-700 bg-blue-100">Contact me</button>
+            <button class="text-white bg-blue-700">Portfolio &rarr;</button>
           </div>
         </div>
       </div>
 
-      <div class="__section-white px-4 py-12">
-        <div class="ml-auto w-4/5">
-          <h1 class="pb-4 text-4xl font-serif">Lorem impsum dolor sit amet</h1>
+      <div class="__section-white">
+        <div class="w-4/5 ml-auto">
+          <h2>Lorem impsum dolor sit amet</h2>
           <p>
             Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
             doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
@@ -63,9 +64,9 @@
         </div>
       </div>
 
-      <div class="__section-gray bg-gray-100 px-4 py-12">
+      <div class="__section-gray">
         <div class="w-4/5">
-          <h1 class="pb-4 text-4xl font-serif">Lorem impsum dolor sit amet</h1>
+          <h2>Lorem impsum dolor sit amet</h2>
           <p>
             Amet magni consectetur aliquam optio nisi, earum Vitae assumenda
             doloribus veritatis pariatur omnis Aliquid quibusdam necessitatibus
@@ -75,18 +76,87 @@
         </div>
       </div>
 
-      <!-- Abschnitt mit Testimonials -->
-      <!-- Abschnitt mit Ausschnitt aus Blogeinträgen -->
+      <!-- TODO: Abschnitt mit Testimonials -->
+
+      <div class="px-4 py-12 bg-white sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div
+          class="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl"
+        >
+          <div>
+            <h2>Blog</h2>
+            <p>
+              From time to time I publish short articles about topics that I am
+              interested in. Topics I most write about are: lorem, ipsum, dolor,
+              sit, amet.
+              <!-- TODO -->
+            </p>
+          </div>
+          <div
+            class="pt-12 mt-12 grid gap-16 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12"
+          >
+            <div>
+              <div>
+                <a href="#" class="inline-block">
+                  <span
+                    class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
+                  >
+                    Article
+                  </span>
+                </a>
+              </div>
+              <a href="#" class="block mt-4">
+                <p class="text-xl font-semibold text-gray-900">
+                  Boost your conversion rate
+                </p>
+                <p class="mt-3 text-base text-gray-500">
+                  Nullam risus blandit ac aliquam justo ipsum. Quam mauris
+                  volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                </p>
+              </a>
+              <div class="flex items-center mt-6">
+                <div class="flex-shrink-0">
+                  <a href="#">
+                    <span class="sr-only">Paul York</span>
+                    <img
+                      class="w-10 h-10 rounded-full"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=VhR4opO16h&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm font-medium text-gray-900">
+                    <a href="#"> Paul York </a>
+                  </p>
+                  <div class="flex text-sm text-gray-500 space-x-1">
+                    <time datetime="2020-03-16"> Mar 16, 2020 </time>
+                    <span aria-hidden="true"> &middot; </span>
+                    <span> 6 min read </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODO: Abschnitt mit Preis/Kosten -->
+      <!-- TODO: Abschnitt zum Kontaktieren -->
     </main>
 
-
-    <footer class="mt-12">
-      <div class="p-4 flex justify-center space-x-8">
-        <i class="block" data-feather="github"></i>
-        <i class="block" data-feather="linkedin"></i>
-        <i class="block" data-feather="instagram"></i>
+    <footer class="mt-12 text-gray-400 __section-gray">
+      <div class="items-center justify-between pt-8 border-t sm:flex">
+        <div
+          class="flex items-center justify-center order-2 sm:jusitfy-between space-x-8"
+        >
+          <i class="block" data-feather="github"></i>
+          <i class="block" data-feather="linkedin"></i>
+          <i class="block" data-feather="instagram"></i>
+        </div>
+        <div class="order-1 mt-4 text-sm text-center sm:mt-0">
+          &copy; 2021 Niklaas Baudet von Gersdorff
+        </div>
       </div>
-      <div class="px-4 pb-4 text-center text-sm">Disclaimer</div>
     </footer>
     <script>
       feather.replace();
