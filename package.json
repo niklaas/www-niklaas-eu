@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-p --print-label start:*",
+    "start": "NODE_ENV=development run-p --print-label start:*",
     "start:eleventy": "npm run build:eleventy -- --serve",
     "start:postcss": "postcss src/scss --dir src/css --watch",
     "build": "NODE_ENV=production run-p --print-label build:postcss build:eleventy",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@tailwindcss/forms": "^0.3.2",
+    "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.2.5",
     "cssnano": "^4.1.10",
     "eslint": "^7.23.0",
