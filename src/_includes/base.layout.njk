@@ -19,14 +19,16 @@
         class="fixed inset-x-0 top-0 z-10 flex items-center justify-between w-full bg-white h-14"
       >
         <div class="font-medium">
-          <span class="inline-block p-4 font-uppercase sm:hidden">Niklaas</span>
-          <span class="hidden p-4 sm:inline-block"
-            >Niklaas Baudet von Gersdorff</span
-          >
+          <a href="/">
+            <span class="inline-block p-4 font-uppercase sm:hidden">Niklaas</span>
+            <span class="hidden p-4 sm:inline-block"
+              >Niklaas Baudet von Gersdorff</span
+            >
+          </a>
         </div>
         <ul class="pr-1">
           <li class="inline-block px-3 py-4">Portfolio</li>
-          <li class="inline-block px-3 py-4">Contact</li>
+          <li class="inline-block px-3 py-4"><a href="/#contact">Contact</a></li>
           <li class="inline-block px-3 py-4">Blog</li>
         </ul>
       </div>
@@ -52,7 +54,7 @@
             </p>
             <div class="flex mt-6 space-x-4">
               <button class="flex-1 text-blue-700 bg-blue-100">Contact me</button>
-              <button class="flex-1 text-white bg-blue-700">Portfolio &rarr;</button>
+              <button class="flex-1 __btn-primary">Portfolio &rarr;</button>
             </div>
           </div>
         </div>
@@ -185,7 +187,37 @@
       </section>
 
       <!-- TODO: Abschnitt mit Preis/Kosten -->
-      <!-- TODO: Abschnitt zum Kontaktieren -->
+      <div class="__section-gray">
+        <div class="mb-4">
+          <a name="contact"><h2>Contact</h2></a>
+          <p class="text-gray-600">
+          Lorem consectetur unde dolor minima saepe? Quasi repellendus unde
+          quaerat hic pariatur? Quos dolorem vitae itaque earum impedit quae
+          Nesciunt eos atque eveniet nihil quaerat animi! Voluptas tenetur rem
+          excepturi.
+          </p>
+        </div>
+        <div>
+          <form action="https://formsubmit.co/me@niklaas.eu" method="POST">
+            <label class="block text-sm font-medium" for="given-name">First name<span class="inline-block w-1 h-1 ml-1 text-xs align-top bg-blue-600 rounded-full" /></label>
+            <input class="w-full px-3 py-2 mt-1 border-gray-300 shadow-sm rounded-md" type="text" name="given-name" id="given-name" autocomplete="given-name" required />
+
+            <label class="block mt-4 text-sm font-medium" for="family-name">Last name<span class="inline-block w-1 h-1 ml-1 text-xs align-top bg-blue-600 rounded-full" /></label>
+            <input class="w-full px-3 py-2 mt-1 border-gray-300 shadow-sm rounded-md" type="text" name="family-name" id="family-name" autocomplete="family-name" required />
+
+            <label class="block mt-4 text-sm font-medium" for="organization">Company</label>
+            <input class="w-full px-3 py-2 mt-1 border-gray-300 shadow-sm rounded-md" type="text" name="organization" id="organization" autocomplete="organization" />
+
+            <label class="block mt-4 text-sm font-medium" for="email">Email<span class="inline-block w-1 h-1 ml-1 text-xs align-top bg-blue-600 rounded-full" /></label>
+            <input class="w-full px-3 py-2 mt-1 border-gray-300 shadow-sm rounded-md" type="text" name="email" id="email" autocomplete="email" required />
+
+            <label class="block mt-4 text-sm font-medium" for="message">Message<span class="inline-block w-1 h-1 ml-1 text-xs align-top bg-blue-600 rounded-full" /></label>
+            <textarea class="w-full h-64 px-3 py-2 mt-1 border-gray-300 shadow-sm rounded-md" type="text" name="message" id="message" required></textarea>
+
+            <button class="w-full mt-4 __btn-primary" type="submit">Let's talk</button>
+          </form>
+        </div>
+      </div>
     </main>
 
     <footer class="px-4 py-12 mt-12 text-gray-400 bg-gradient-to-b from-white to-gray-50">

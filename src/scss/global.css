@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Move anchor links downward b/c of overlaying mobile menu at the top.
+ */
+:target:before {
+  content: "";
+  @apply block h-16 mt-16;
+}
+
 button {
   @apply px-4 py-2 text-lg rounded;
+
+  &.__btn-primary {
+    @apply text-white bg-blue-700;
+  }
 }
 
 .__section-white {
