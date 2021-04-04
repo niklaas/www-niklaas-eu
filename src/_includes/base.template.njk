@@ -141,7 +141,7 @@ const [styleSlider, setStyleSlider] = useSprings(
           <div
             class="pt-12 mt-12 grid gap-16 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12"
           >
-            {% for i in [1, 2, 3] %}
+            {% for post in ( collections.post | reverse ).slice(0, 3) %}
               <div class="__blog-entry">
                 <div>
                   <a href="#" class="inline-block">
@@ -153,13 +153,12 @@ const [styleSlider, setStyleSlider] = useSprings(
                   </a>
                 <!-- TODO: add further tags here -->
                 </div>
-                <a href="#" class="block mt-4">
+                <a href="{{ post.url }}" class="block mt-4">
                   <p class="font-serif text-xl font-medium">
-                  Lorem ipsum {{ i }}
+                  {{ post.data.title }}
                   </p>
                   <p class="mt-3 text-base text-gray-600">
-                    Nullam risus blandit ac aliquam justo ipsum. Quam mauris
-                    volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                    {{ post.templateContent | safe | truncate(240) }}
                   </p>
                 </a>
                 <div class="flex mt-3 text-sm text-gray-500 space-x-1">
