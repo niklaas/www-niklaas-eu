@@ -18,6 +18,12 @@ button {
   }
 }
 
+.__profile-photo {
+  img {
+    @apply object-cover w-48 h-48 mx-auto mb-12 rounded-full shadow-lg ;
+  }
+}
+
 .__section-white {
   @apply px-4 py-12 bg-white;
 }
