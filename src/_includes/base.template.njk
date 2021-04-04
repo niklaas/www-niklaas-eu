@@ -120,18 +120,8 @@ const [styleSlider, setStyleSlider] = useSprings(
         </div>
       </section>
 
-      <section>
-        <div class="text-center __section-gray">
-          <p class="text-gray-500">What clients said:</p>
-          <blockquote class="mt-8">
-            <p class="font-serif text-3xl italic">&raquo;<span>Cool guy with cool sunglases.</span>&laquo;</p>
-            <footer>
-              <img class="w-10 h-10 mx-auto mt-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=VhR4opO16h&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-              <div class="mt-2 text-lg font-semibold">Tom Sawyer</div>
-              <div class="text-gray-600">CEO Superduper Company</div>
-            </footer>
-          </blockquote>
-        </div>
+      <section class="text-center __skills __section-gray">
+        {% include "skills.njk" %}
       </section>
 
       <section class="px-4 py-12 bg-white sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -183,7 +173,24 @@ const [styleSlider, setStyleSlider] = useSprings(
         </div>
       </section>
 
-      <!-- TODO: Abschnitt mit Preis/Kosten -->
+      <section>
+        <div class="text-center __section-gray">
+          <p class="text-gray-500">What clients said:</p>
+          <blockquote class="mt-8">
+            <p class="font-serif text-3xl italic">&raquo;<span>Cool guy with cool sunglases.</span>&laquo;</p>
+            <footer>
+              <img class="w-10 h-10 mx-auto mt-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=VhR4opO16h&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <div class="mt-2 text-lg font-semibold">Tom Sawyer</div>
+              <div class="text-gray-600">CEO Superduper Company</div>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="text-center __interests __section-white">
+        {% include "interests.njk" %}
+      </section>
+
       <div class="__section-gray">
         <div class="mb-4">
           <a name="contact"><h2>Contact</h2></a>
