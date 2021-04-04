@@ -5,6 +5,7 @@ async function imageShortcode(src, alt, sizes) {
     outputDir: "./dist/images",
     urlPath: "/images/",
     widths: [640, 768, 1024, 1280, 1536],
+    formats: ["webp", "jpeg", "svg"],
   });
   const imageAttributes = {
     alt,
