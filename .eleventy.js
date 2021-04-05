@@ -30,10 +30,21 @@ module.exports = function (eleventyConfig) {
     "./src/robots.disallow.txt": "robots.txt",
   });
 
+  // collections
+  eleventyConfig.addCollection("blog", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("./src/blog/**/*")
+      .filter(
+        (post) =>
+          typeof post.data.draft === "undefined" || post.data.draft === false
+      );
+  });
+
   return {
     dir: {
       input: "src",
       output: "dist",
     },
+    markdownTemplateEngine: "njk",
   };
 };
