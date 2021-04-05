@@ -4,7 +4,7 @@ author: "Niklaas Baudet von Gersdorff"
 date: 2017-10-04T19:04:22+02:00
 slug: "gnupg-ssb-generation"
 
-tags: [post, "GnuPG", "gpg2", "gpg"]
+tags: ["GnuPG", "gpg2", "gpg"]
 ---
 
 You should store your master key at a save place i.e., not on your notebook.

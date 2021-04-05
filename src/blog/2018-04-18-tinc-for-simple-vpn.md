@@ -2,7 +2,7 @@
 title: "Using tinc for a simple meshed VPN network"
 date: 2018-05-10T16:44:32+02:00
 
-tags: [post, "tinc", "sysadmin", "ip-addr", "ip-route", "VPN", "Debian"]
+tags: ["tinc", "sysadmin", "ip-addr", "ip-route", "VPN", "Debian"]
 ---
 
 Accessing your computers from remote at home isn't easy since you lack a public

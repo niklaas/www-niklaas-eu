@@ -3,7 +3,7 @@ title: "Deferring functions for \"on entry\" actions"
 author: "Niklaas Baudet von Gersdorff"
 date: 2018-02-25T19:25:25+02:00
 
-tags: [post, "golang", "programming", "functions", "GOPL"]
+tags: ["golang", "programming", "functions", "GOPL"]
 ---
 
 I decided to learn [Go](https://golang.org) because it seems an interesting and

@@ -3,7 +3,7 @@ title: "Manual Jail Management"
 date: 2018-05-13T13:03:02+02:00
 draft: true
 
-tags: [post, "FreeBSD", "sysadmin"]
+tags: ["FreeBSD", "sysadmin"]
 ---
 
 Some while ago I read a [very interesting article about manual jail

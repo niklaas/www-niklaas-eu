@@ -3,7 +3,7 @@ title: "reveal.js and remote pointers"
 author: "Niklaas Baudet von Gersdorff"
 date: 2017-05-14T14:39:12+02:00
 
-tags: ["post", "reveal.js"]
+tags: ["reveal.js"]
 ---
 
 [Reveal.js](https://github.com/hakimel/reveal.js) is a great framework for
