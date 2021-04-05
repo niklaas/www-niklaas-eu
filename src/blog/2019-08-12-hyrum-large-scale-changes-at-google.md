@@ -1,6 +1,6 @@
 ---
 author: "Niklaas Baudet von Gersdorff"
-title: "Summary of 'Large-Scale Changes at Google...' by Hyrum Wright"
+title: "'Large-Scale Changes at Google...' by Hyrum Wright"
 date: 2019-08-12T20:30:40+02:00
 draft: true
 
@@ -27,7 +27,7 @@ for you, the reader, this is a different experience than watching the
 talk by yourself (I highly recommend to do so!) but it can be -- as it
 is for me -- a future reference to quickly recapture what he reasoned.
 
-{{ youtube(id="TrC6ROeV4GI", class="youtube-responsive" autoplay=false) }}
+<!-- TODO: add youtube link here: TrC6ROeV4GI -->
 
 [Hyrum Wright](personal-homepage) introduces [his talk](talk-on-utube)
 by summarizing some well-known truths about software development and
@@ -43,7 +43,7 @@ clarity. They say:
 - Code contains bugs.
 
 Although they sound like truisms, they underline very well what every
-codebase is victim of: *change*. That said, software engineers rather
+codebase is victim of: _change_. That said, software engineers rather
 train and prepare for disaster mitigation than for changing code
 quickly.
 
