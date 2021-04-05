@@ -2,7 +2,7 @@
 title: "Setting up syncthing with systemd on Debian"
 date: 2018-04-10T19:11:53+02:00
 
-tags: [post, "syncthing", "Debian", "sysadmin", "systemd"]
+tags: ["syncthing", "Debian", "sysadmin", "systemd"]
 ---
 
 [Syncthing][syncthing] is a great tool for keeping machines in sync. This is

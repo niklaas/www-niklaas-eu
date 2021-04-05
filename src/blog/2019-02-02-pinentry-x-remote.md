@@ -1,7 +1,7 @@
 ---
 title: "Using a proper pinentry remotely when running X"
 date: 2019-03-10T16:59:49+01:00
-tags: [post, "Debian", "ssh", "pinentry", "gpg", "GnuPG"]
+tags: ["Debian", "ssh", "pinentry", "gpg", "GnuPG"]
 ---
 
 Use `pinentry-gtk2` to avoid a missing password prompt when connecting to a

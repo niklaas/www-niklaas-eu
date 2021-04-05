@@ -2,7 +2,7 @@
 title: "Unattended Upgrades"
 date: 2018-05-10T21:49:31+02:00
 
-tags: [post, "Debian", "sysadmin", "upgrades", "security", "crontab"]
+tags: ["Debian", "sysadmin", "upgrades", "security", "crontab"]
 ---
 
 In some cases it makes sense to install upgrades of packages automatically. This

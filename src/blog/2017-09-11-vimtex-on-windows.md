@@ -2,7 +2,7 @@
 title: "Configuring vimtex on Windows"
 author: "Niklaas Baudet von Gersdorff"
 date: 2017-09-11T20:13:25+02:00
-tags: [post, "Windwos", "LaTeX", "vim", "vimtex"]
+tags: ["Windwos", "LaTeX", "vim", "vimtex"]
 draft: true
 
 ---

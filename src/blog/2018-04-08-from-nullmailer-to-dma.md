@@ -2,7 +2,7 @@
 title: "Drop Nullmailer for DragonFly Mail Agent (dma)"
 date: 2018-04-08T09:38:19+02:00
 
-tags: [post, "Unix", "Mail", "dma", "nullmailer", "sysadmin"]
+tags: ["Unix", "Mail", "dma", "nullmailer", "sysadmin"]
 ---
 
  **Update:** In the previous version of this post, the sequence of the

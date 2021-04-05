@@ -4,7 +4,7 @@ author: "Niklaas Baudet von Gersdorff"
 date: 2017-11-05T17:59:17+01:00
 slug: "freebsd-hardening"
 
-tags: [post, "FreeBSD", "security"]
+tags: ["FreeBSD", "security"]
 ---
 
 In the following I shortly describe the procedure to harden a vanilla FreeBSD server. This is basically about securing SSH and setting up PF (firewall) to protect against possible intruders.

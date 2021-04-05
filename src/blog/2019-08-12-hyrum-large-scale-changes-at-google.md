@@ -4,7 +4,7 @@ title: "Summary of 'Large-Scale Changes at Google...' by Hyrum Wright"
 date: 2019-08-12T20:30:40+02:00
 draft: true
 
-tags: [post, "Hyrum Wright", "bugs", "summary", "Google"]
+tags: ["Hyrum Wright", "bugs", "summary", "Google"]
 categories: ["software design"]
 ---
 

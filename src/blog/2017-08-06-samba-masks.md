@@ -4,7 +4,7 @@ author: "Niklaas Baudet von Gersdorff"
 date: 2017-08-06T09:10:47+02:00
 slug: "samba-masks"
 
-tags: [post, "samba", "permissions"]
+tags: ["samba", "permissions"]
 ---
 
 When setting up [Samba](https://www.samba.org/) shares, I always wonder how to

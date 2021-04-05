@@ -1,7 +1,7 @@
 ---
 title: "Disable ssh-agent in Xfce"
 date: 2019-02-16
-tags: [post, "Xfce", "ssh-agent", "GnuPG"]
+tags: ["Xfce", "ssh-agent", "GnuPG"]
 ---
 
 While switching from `ssh-agent` itself to GnuPG's `ssh-agent` capabilities, I

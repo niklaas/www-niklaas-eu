@@ -3,7 +3,7 @@ title: "FreeBSD and bluetooth keyboards"
 author: "Niklaas Baudet von Gersdorff"
 date: 2017-06-09T12:09:15+02:00
 
-tags: [post, "FreeBSD", "bluetooth"]
+tags: ["FreeBSD", "bluetooth"]
 ---
 
 <!-- more -->
