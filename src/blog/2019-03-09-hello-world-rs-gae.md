@@ -9,10 +9,6 @@ The article provides some background to the example project
 deploy a simple "Hello World!" server on [Google App Engine][gae] served by a
 static Rust binary.
 
-<!-- more -->
-
-----
-
 Nowadays there is no longer need to supervise servers for providing a
 performant web application. Since containerization, Docker, Kubernetes and the
 like have become mainstream, more and more cloud providers offer managed
@@ -22,7 +18,7 @@ managed Kubernetes service][do-kubernetes].
 
 Another service I came across recently is [Google App Engine][gae]. At first
 glance it seemed to target specific languages only, such as JavaScript, Python,
-Ruby, Go, etc. but, in fact, it supports *any language* you can think of -- as
+Ruby, Go, etc. but, in fact, it supports _any language_ you can think of -- as
 long as you can provide your application in a Docker container that serves a
 so-called "[custom runtime][gae-about-custom-runtimes]".
 
@@ -41,7 +37,6 @@ resulting binary in a [`scratch` container][dockerfile]. While I was quite
 skeptic about this idea in the first place, I turned out to work. And it is
 pretty useful because it offers a very simple way of hosting an automatically
 scaling REST endpoint that is light on resources.
-
 
 [actix]: https://actix.rs
 [aws-beanstalk]: https://aws.amazon.com/elasticbeanstalk/
