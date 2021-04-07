@@ -1,0 +1,11 @@
+{% extends "base.template.njk" %}
+
+{% block main %}
+<div class="px-4">
+  <h2>{{ title }}</h2>
+  <article class="prose">
+    {{ content | safe }}
+    {# TODO: add a <footer> to <article> for some meta information etc. pp. #}
+  </article>
+</div>
+{% endblock%}
