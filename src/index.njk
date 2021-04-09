@@ -2,6 +2,8 @@
 layout: "base.template.njk"
 ---
 
+{% import "macros.njk" as macros %}
+
 <section class="__introduction">
   <div class="px-4 py-12 bg-gradient-to-t from-gray-50 to-white">
     <div class="__profile-photo">
@@ -106,7 +108,7 @@ layout: "base.template.njk"
           <div class="flex mt-3 text-sm text-gray-500 space-x-1">
             <time datetime="{{ post.date.toISOString() }}">{{ post.date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
             <span aria-hidden="true"> &middot; </span>
-            <span>{{ post.templateContent | wordcount // 130}} mins read</span>
+            <span>{{ macros.readtime(post.templateContent) }}</span>
           </div>
         </div>
       {% endfor %}
