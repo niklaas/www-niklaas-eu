@@ -1,4 +1,7 @@
+const production = process.env.NODE_ENV === "production";
+
 const Image = require("@11ty/eleventy-img");
+const htmlmin = require("html-minifier");
 
 async function imageShortcode(src, alt, sizes) {
   const metadata = await Image(src, {
@@ -36,6 +39,20 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob("./src/blog/**/*")
       .filter((post) => post.data.draft != true);
   });
+
+  production &&
+    eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+      if (outputPath && outputPath.endsWith(".html")) {
+        let minified = htmlmin.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true,
+        });
+        return minified;
+      }
+
+      return content;
+    });
 
   return {
     dir: {
