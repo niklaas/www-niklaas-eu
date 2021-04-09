@@ -53,36 +53,7 @@ layout: "base.template.njk"
         <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
         <div class="w-3 h-3 bg-green-500 rounded-full"></div>
       </div>
-      <pre class="overflow-x-scroll max-h-96"><code>{% raw %}// React example
-const [styleSlider, setStyleSlider] = useSprings(
-ProfileData.photoMetas.length,
-i => ({
-// check for window to support ssr
-x: i * (typeof window !== `undefined` ? window.innerWidth : 0),
-sc: 1,
-display: "block",
-})
-)
-useWindowEventListener("resize", () => moveSliderTo())
-
-const moveSliderTo = (idx?: number) => {
-if (typeof idx !== "undefined") {
-setImageIdx(idx)
-}
-
-setStyleSlider(i => {
-if (i < overlayedPhotoIndexRef.current - 1 || i > overlayedPhotoIndexRef.current + 1) {
-  return { display: "none" }
-}
-
-return {
-  x: (i - overlayedPhotoIndexRef.current) * window.innerWidth,
-  sc: 1,
-  display: "block",
-}
-})
-}
-      {% endraw %}</code></pre>
+      {% include "react-example.njk" %}
     </div>
   </div>
 </section>
