@@ -10,6 +10,10 @@
   @apply block h-16 mt-16;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 button {
   @apply px-4 py-2 text-lg rounded;
 
