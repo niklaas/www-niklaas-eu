@@ -1,11 +1,40 @@
+{% import "macros.njk" as macros %}
+
 {% extends "base.template.njk" %}
 
 {% block main %}
-<div class="px-4">
-  <h2>{{ title }}</h2>
-  <article class="prose">
+<article>
+  <div class="px-4 py-6 font-serif bg-gray-50">
+    <div class="text-center text-gray-600">
+      <time datetime="{{ date.toISOString() }}">{{ date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
+      <span aria-hidden="true">&middot;</span>
+      <span>{{ macros.readtime(content) }}</span>
+    </div>
+    <ul class="flex flex-wrap justify-center text-gray-400 lowercase">
+      {% for tag in tags %}
+      <li class="block m-1 italic"><a href="#">#{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="px-4 my-4 prose">
+    <h2 class="text-center">{{ title }}</h2>
     {{ content | safe }}
-    {# TODO: add a <footer> to <article> for some meta information etc. pp. #}
-  </article>
-</div>
+  </div>
+  <footer class="flex justify-between py-12 bg-gray-50 place-items-center">
+    {% set previousPost = collections.blog | getPreviousCollectionItem(page) %}
+    {% set nextPost = collections.blog | getNextCollectionItem(page) %}
+    <a class="flex w-1/2 p-4 place-items-center space-x-3" href="{{ previousPost.url }}">
+    {% if previousPost %}
+      <div>&larr;</div>
+      <div>{{ previousPost.data.title | truncate(32) }}</div>
+    {% endif %}
+    </a>
+    <a class="flex w-1/2 p-4 place-items-center space-x-3" href="{{ nextPost.url }}">
+    {% if nextPost %}
+      <div>{{ nextPost.data.title | truncate(32) }}</div>
+      <div>&rarr;</div>
+    {% endif %}
+    </a>
+  </footer>
+</article>
 {% endblock%}
