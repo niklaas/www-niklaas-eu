@@ -16,7 +16,7 @@
   <body class="text-gray-800">
     <header>
       <div
-        class="fixed inset-x-0 top-0 z-10 flex items-center justify-between w-full bg-white h-14"
+        class="fixed inset-x-0 top-0 z-10 flex items-center justify-between w-full bg-white h-14 max-w-screen-lg lg:mx-auto"
       >
         <div class="font-medium">
           <a href="/">
@@ -34,13 +34,13 @@
       </div>
     </header>
 
-    <main class="mt-14">
-      {% block main %}
-      {{ content | safe }}
-      {% endblock %}
+    <main class="max-w-screen-lg mt-14 lg:mx-auto">
+      {% block main -%}
+      {{- content | safe -}}
+      {%- endblock %}
     </main>
 
-    <footer class="px-4 py-12 text-gray-400 bg-gradient-to-b from-white to-gray-50 divide-y">
+    <footer class="px-4 py-12 text-gray-400 bg-gradient-to-b from-white to-gray-50 divide-y max-w-screen-lg lg:mx-auto lg:mt-12">
       <p class="mb-8 text-center">
         &raquo;To fulfil your potential, help others to fulfil theirs.&laquo;
         <span class="whitespace-nowrap">&mdash; Simon Sinek</span>
