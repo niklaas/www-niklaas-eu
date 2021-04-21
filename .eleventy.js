@@ -40,6 +40,14 @@ module.exports = function (eleventyConfig) {
       .filter((post) => post.data.draft != true);
   });
 
+  eleventyConfig.addFilter("keys", (obj) => Object.keys(obj));
+  eleventyConfig.addFilter("exclude", (list, exclusion) =>
+    list.filter((l) => !exclusion.includes(l))
+  );
+  eleventyConfig.addFilter("shuf", (list) =>
+    list.sort(() => Math.random() - 0.5)
+  );
+
   production &&
     eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
       if (outputPath && outputPath.endsWith(".html")) {
