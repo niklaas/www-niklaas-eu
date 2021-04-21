@@ -1,9 +1,9 @@
 ---
-title: "Deferring functions for \"on entry\" actions"
+title: 'Deferring functions for "on entry" actions'
 author: "Niklaas Baudet von Gersdorff"
 date: 2018-02-25T19:25:25+02:00
 
-tags: ["golang", "programming", "functions", "GOPL"]
+tags: ["golang", "programming", "functions"]
 ---
 
 I decided to learn [Go](https://golang.org) because it seems an interesting and
@@ -31,7 +31,7 @@ func main() {
 }
 ```
 
-But defer can also be used to execute a code on both exit *and entry*,
+But defer can also be used to execute a code on both exit _and entry_,
 e.g.:[^gopl-example]
 
 ```Go
@@ -56,6 +56,5 @@ and prints `msg`. The anonymous function is returned and handed over to `defer`
 which will execute it as soon as `bigSlowOperation` is exited. Eventually this
 prints the exit message.
 
-[^gopl-github]: The original source code of the examples can be found in [the book's GitHub repository](https://github.com/adonovan/gopl.io/). The code is licensed under [CC BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
-
+[^gopl-github]: The original source code of the examples can be found in [the book's GitHub repository](https://github.com/adonovan/gopl.io/). The code is licensed under [CC BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 [^gopl-example]: The example is taken from [gopl.io/ch5/trace](gopl.io/ch5/trace/main.go).

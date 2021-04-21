@@ -1,3 +1,31 @@
 {% macro readtime(words) -%}
   {{ words | wordcount //130 }} mins read
 {%- endmacro %}
+
+{% macro postwidget(post) -%}
+<article class="__blog-entry">
+  <div class="flex flex-wrap text-sm text-gray-500">
+    {% for tag in post.data.tags %}
+    {# TODO: make tag clickable to find all posts of this particular tag #}
+    <a class="inline-block pr-2 mr-1" href="/tags/{{ tag }}/">
+      #{{ tag }}
+    </a>
+    {% endfor %}
+  </div>
+  <a href="{{ post.url }}" class="block mt-1">
+    <p class="font-serif text-xl font-medium">
+    {{ post.data.title }}
+    </p>
+    {% if post.data.excerpt %}
+    <p class="mt-3 text-base text-gray-600">
+      {{ post.data.excerpt | safe }}
+    </p>
+    {% endif %}
+  </a>
+  <div class="flex mt-3 text-sm text-gray-500 space-x-1">
+    <time datetime="{{ post.date.toISOString() }}">{{ post.date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
+    <span aria-hidden="true"> &middot; </span>
+    <span>{{ readtime(post.templateContent) }}</span>
+  </div>
+</article>
+{%- endmacro %}
