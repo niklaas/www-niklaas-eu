@@ -1,7 +1,7 @@
 <h2 class="pb-2 text-4xl">{% block title %}{% endblock %}</h2>
-<p class="text-gray-500">
-{% block description %}{% endblock %}
+<p class="text-gray-500 max-w-screen-md md:mx-auto">
+  {% block description %}{% endblock %}
 </p>
-<div class="mt-8 grid grid-cols-4 place-items-center gap-4 __logos">
+<div class="mt-8 grid grid-cols-4 place-items-center gap-4 __logos md:grid-cols-8 max-w-screen-md md:mx-auto">
   {% block logos %}{% endblock %}
 </div>

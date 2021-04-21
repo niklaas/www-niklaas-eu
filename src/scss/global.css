@@ -33,7 +33,7 @@ button, .__btn {
 }
 
 .__section-gray {
-  @apply px-4 py-12 bg-gray-50;
+  @apply px-4 py-12 bg-gray-50 lg:rounded;
 }
 
 .__technology .__logos [data-skill] {
