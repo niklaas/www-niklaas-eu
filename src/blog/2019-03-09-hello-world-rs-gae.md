@@ -1,7 +1,7 @@
 ---
 title: "Performant and lightweight Rust API Server powered by Google App Engine"
 date: 2019-03-09T16:21:47+01:00
-tags: ["Google App Engine", "GAE", "Rust", "Web"]
+tags: ["google-app-engine", "gae", "rust", "web"]
 ---
 
 The article provides some background to the example project

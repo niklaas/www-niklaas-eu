@@ -4,7 +4,7 @@ author: "Niklaas Baudet von Gersdorff"
 date: 2017-09-09T11:18:30+02:00
 slug: "mounting-vboxsf"
 
-tags: ["virtual-box", "sysadmin", "Windows", "Linux", "Permissions"]
+tags: ["virtual-box", "sysadmin", "Windows", "linux", "permissions"]
 ---
 
 When mounting VirtualBox folders shared by Windows with `mount -t vboxsf <shared folder> <mountpoint>` on a Unix machine, the permissions of files and
