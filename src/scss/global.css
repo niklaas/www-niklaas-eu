@@ -41,7 +41,7 @@ button, .__btn {
 }
 
 main {
-  h2 {
-    @apply pb-4 font-serif font-semibold tracking-tight;
+  h1, h2 {
+    @apply font-serif font-semibold tracking-tight;
   }
 }
