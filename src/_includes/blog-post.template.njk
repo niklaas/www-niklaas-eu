@@ -5,21 +5,21 @@
 {% block main %}
 <article>
   <div class="px-4 py-6 font-serif bg-gray-50">
-    <div class="text-center text-gray-600">
+    <header class="text-center text-gray-600">
       <time datetime="{{ date.toISOString() }}">{{ date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{{ macros.readtime(content) }}</span>
-    </div>
+    </header>
     <ul class="flex flex-wrap justify-center text-gray-400 lowercase">
       {% for tag in tags %}
       <li class="block m-1 italic"><a href="/tags/{{ tag }}/">#{{ tag }}</a></li>
       {% endfor %}
     </ul>
   </div>
-  <div class="px-4 my-4 prose">
-    <h2 class="text-center">{{ title }}</h2>
+  <main class="px-4 my-4 prose">
+    <h1 class="text-center">{{ title }}</h1>
     {{ content | safe }}
-  </div>
+  </main>
   <footer class="flex justify-between py-12 bg-gray-50 place-items-center">
     {% set previousPost = collections.blog | getPreviousCollectionItem(page) %}
     {% set nextPost = collections.blog | getNextCollectionItem(page) %}
