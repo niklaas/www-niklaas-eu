@@ -4,14 +4,11 @@
 
 {% macro postwidget(post) -%}
 <article class="__blog-entry">
-  <div class="flex flex-wrap text-sm text-gray-500">
-    {% for tag in post.data.tags %}
-    {# TODO: make tag clickable to find all posts of this particular tag #}
-    <a class="inline-block pr-2 mr-1" href="/tags/{{ tag }}/">
-      #{{ tag }}
-    </a>
-    {% endfor %}
-  </div>
+  <ul class="flex flex-wrap text-sm text-gray-500">
+    {% for name in post.data.tags -%}
+    <li class="inline-block mr-2">{{ tag(name) }}</li>
+    {%- endfor %}
+  </ul>
   <a href="{{ post.url }}" class="block mt-1">
     <p class="font-serif text-xl font-medium">
     {{ post.data.title }}
@@ -28,4 +25,12 @@
     <span>{{ readtime(post.templateContent) }}</span>
   </div>
 </article>
+{%- endmacro %}
+
+{% macro tag(name) -%}
+  <span class="lowercase __tag">
+    <a href="/tags/{{ name | lower | replace(" ", "-") }}/">
+    <span aria-hidden="true">#</span
+    ><span>{{ name  }}</a>
+  </span>
 {%- endmacro %}
