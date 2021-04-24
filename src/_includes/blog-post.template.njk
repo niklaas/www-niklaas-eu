@@ -1,12 +1,14 @@
-{% import "macros.njk" as macros %}
+---
+layout: "base.template.njk"
+---
 
-{% extends "base.template.njk" %}
+{%- import "macros.njk" as macros -%}
 
 {% block main %}
 <article>
   <header class="px-4 py-6 font-serif bg-gray-50 lg:rounded-b">
     <div class="text-center text-gray-600">
-      <time datetime="{{ date.toISOString() }}">{{ date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
+      <time datetime="{{ page.date.toISOString() }}">{{ page.date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) }}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{{ macros.readtime(content) }}</span>
     </div>
