@@ -1,0 +1,5 @@
+<ul class="flex flex-wrap justify-center lowercase space-x-2 max-w-screen-md md:mx-auto">
+  {% for name in (( collections | keys | exclude(['all'] ) | sort)) %}
+  <li>{{ macros.tag(name) }}</li>
+  {% endfor %}
+</ul>
