@@ -5,7 +5,7 @@
 {% macro postwidget(post) -%}
 <article class="__blog-entry">
   <ul class="flex flex-wrap text-sm text-gray-500">
-    {% for name in post.data.tags -%}
+    {% for name in ( post.data.tags | sort ) -%}
     <li class="inline-block mr-2">{{ tag(name) }}</li>
     {%- endfor %}
   </ul>
