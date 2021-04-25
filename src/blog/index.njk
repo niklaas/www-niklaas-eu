@@ -4,14 +4,24 @@ pagination:
   data: collections.blog
   size: 12
   alias: posts
+  reverse: true
 ---
 {% import "macros.njk" as macros %}
 
-{%- block main %}
+{%- block main -%}
 
 <div class="text-center __section-gray">
-  <h1 class="text-4xl">Blog</h1>
-  <p></p>
+  <h1>Blog</h1>
+  <p class="text-gray-500">You are viewing my blog posts <span class="italic">by time</span>. You can also view them <a href="/blog/tags/" class="px-2 py-1 bg-white hover:bg-gray-100 hover:text-gray-700">by tags</a>.</p>
+  <nav class="mt-4 lg:mt-4">
+    <ol class="flex justify-center">
+      <li class="inline-block">{% if pagination.href.previous %}<a class="px-2 py-3" href="{{ pagination.href.previous }}">&larr;</a>{% endif %}</li>
+      {%- for pageEntry in pagination.pages %}
+      <li class="inline-block"><a class="px-4 py-3" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+      {%- endfor %}
+      <li class="inline-block">{% if pagination.href.next %}<a class="px-2 py-3" href="{{ pagination.href.next }}">&rarr;</a>{% endif %}</li>
+    </ol>
+  </nav>
 </div>
 
 <div class="px-4">
