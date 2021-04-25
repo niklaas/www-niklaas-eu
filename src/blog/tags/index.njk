@@ -5,11 +5,21 @@ layout: base.template.njk
 {% import "macros.njk" as macros %}
 
 {% block main %}
-  <div class="px-4 py-6 bg-gray-50">
-    <ul class="flex flex-wrap justify-center">
-    {% for tag in ( collections | keys | exclude(['all']) | sort ) -%}
-      <li class="inline-block mb-1 mr-2">{{ macros.tag(tag) }}</li>
-    {%- endfor %}
-    </ul>
+<div class="text-center __section-gray">
+  <h1>Blog</h1>
+  <p class="text-gray-500">You are viewing my blog posts <span class="italic">by tag</span>. You can view them <a href="/blog/" class="px-2 py-1 bg-white rounded hover:bg-red-100 hover:text-red-700">by time</a> instead.</p>
+</div>
+
+<div class="__section-white">
+  {% include "list-of-tags.njk" %}
+</div>
+
+<div class="__section-gray">
+  <h1>Recent blog posts</h1>
+  <div class="pt-4 grid gap-10 md:grid-cols-3">
+    {% for post in ( collections.blog | reverse ).slice(0, 3) %}
+    {{ macros.postwidget(post) }}
+    {% endfor %}
   </div>
+</div>
 {% endblock %}
