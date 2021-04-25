@@ -52,5 +52,12 @@ main {
   h2{
     @apply text-xl md:text-2xl lg:text-3xl;
   }
+
+  nav {
+    @apply text-gray-600;
+
+    [aria-current] {
+      @apply text-gray-800 bg-gray-100 rounded;
+    }
   }
 }
