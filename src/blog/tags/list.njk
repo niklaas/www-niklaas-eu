@@ -1,16 +1,15 @@
 ---
+layout: base.template.njk
 pagination:
   data: collections
   size: 1
   alias: tag
   filter:
     - all
-permalink: /tags/{{ tag | lower | replace(" ", "-") }}/
+permalink: /blog/tags/{{ tag | lower | replace(" ", "-") }}/
 ---
 
 {% import "macros.njk" as macros %}
-
-{% extends "base.template.njk" %}
 
 {% set taglist = collections[ tag ] %}
 
