@@ -13,8 +13,8 @@ layout: "base.template.njk"
       <span>{{ macros.readtime(content) }}</span>
     </div>
     <ul class="flex flex-wrap justify-center text-gray-400 lowercase">
-      {% for tag in tags %}
-      <li class="block m-1 italic"><a href="/tags/{{ tag }}/">#{{ tag }}</a></li>
+      {% for tagname in tags %}
+      <li class="block m-1 italic">{{ macros.tag(tagname) }}</li>
       {% endfor %}
     </ul>
   </header>
