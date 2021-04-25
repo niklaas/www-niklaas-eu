@@ -2,10 +2,11 @@
 title: "Using a proper pinentry remotely when running X"
 date: 2019-03-10T16:59:49+01:00
 tags: ["Debian", "ssh", "pinentry", "gpg", "GnuPG"]
----
 
-Use `pinentry-gtk2` to avoid a missing password prompt when connecting to a
-remote machine.
+excerpt: >
+  Use `pinentry-gtk2` to avoid a missing password prompt when connecting to a
+  remote machine.
+---
 
 The application `pinentry` opens when you need to provide your password for
 decrypting your GnuPG key. You can install different interfaces for providing

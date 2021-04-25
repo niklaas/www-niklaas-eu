@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+$highlight-color: red-700;
+$highlight-color-dimmed: red-100;
+
 /**
  * Move anchor links downward b/c of overlaying mobile menu at the top.
  */
@@ -19,10 +22,20 @@ body {
 }
 
 button, .__btn {
-  @apply px-4 py-2 text-lg rounded;
+  @apply px-4 py-2 text-lg text-$highlight-color bg-$highlight-color-dimmed rounded;
 
   &.__btn-primary {
-    @apply text-white bg-blue-700;
+    @apply text-white bg-$highlight-color;
+  }
+}
+
+.__tag {
+  &:hover {
+    @apply underline;
+  }
+
+  .__tag-hash {
+    @apply text-$highlight-color;
   }
 }
 
@@ -53,11 +66,19 @@ main {
     @apply text-xl md:text-2xl lg:text-3xl;
   }
 
-  nav {
+  nav.__pagination {
     @apply text-gray-600;
 
-    [aria-current] {
-      @apply text-gray-800 bg-gray-100 rounded;
+    a {
+      @apply px-3 py-2 mx-1 rounded;
+
+      &:hover {
+        @apply bg-$highlight-color-dimmed text-$highlight-color;
+      }
+
+      &[aria-current] {
+        @apply text-$highlight-color bg-$highlight-color-dimmed rounded;
+      }
     }
   }
 }
