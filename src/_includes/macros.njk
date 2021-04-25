@@ -30,7 +30,7 @@
 {% macro tag(name) -%}
   <span class="lowercase __tag">
     <a href="/tags/{{ name | lower | replace(" ", "-") }}/">
-    <span aria-hidden="true">#</span
+    <span aria-hidden="true" class="text-gray-400">#</span
     ><span>{{ name  }}</a>
   </span>
 {%- endmacro %}
