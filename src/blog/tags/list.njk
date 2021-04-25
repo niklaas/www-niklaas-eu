@@ -21,9 +21,9 @@ permalink: /blog/tags/{{ tag | lower | replace(" ", "-") }}/
   {%- if (taglist | length) > 1 %}s{% endif %}</div>
 </div>
 
-<div class="__posts_of_tag-{{ tag | lower }} px-4 divide-y">
+<div class="__posts_of_tag-{{ tag | lower }} grid md:grid-cols-3 lg:grid-cols-4 gap-8 __section-white">
   {% for post in taglist | reverse -%}
-  <div class="py-6">
+  <div>
     {{ macros.postwidget(post) }}
   </div>
   {%- endfor %}
