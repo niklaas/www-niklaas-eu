@@ -36,7 +36,7 @@ module.exports = function (eleventyConfig) {
   // collections
   eleventyConfig.addCollection("blog", function (collectionApi) {
     return collectionApi
-      .getFilteredByGlob("./src/blog/**/*")
+      .getFilteredByGlob("./src/blog/posts/**/*")
       .filter((post) => post.data.draft != true);
   });
 
