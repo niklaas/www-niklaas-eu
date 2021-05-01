@@ -6,7 +6,7 @@ pagination:
   alias: tag
   filter:
     - all
-permalink: /blog/tags/{{ tag | lower | replace(" ", "-") }}/
+permalink: /blog/tags/{{ tag | slug }}/
 ---
 
 {% import "macros.njk" as macros %}
