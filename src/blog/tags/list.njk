@@ -16,7 +16,7 @@ permalink: /blog/tags/{{ tag | lower | replace(" ", "-") }}/
 {% block main -%}
 
 <div class="px-4 py-6 font-serif text-center bg-gray-50">
-  <h1 class="text-xl lowercase">#{{ tag }}</h1>
+  <h1 class="lowercase">#{{ tag }}</h1>
   <div class="text-sm text-gray-400">{{ taglist | length }} post
   {%- if (taglist | length) > 1 %}s{% endif %}</div>
 </div>
