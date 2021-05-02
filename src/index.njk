@@ -93,11 +93,13 @@ layout: "base.template.njk"
   <div class="text-center __section-gray">
     <p class="text-gray-500">What clients said:</p>
     <blockquote class="mt-8">
-      <p class="font-serif text-3xl italic">&raquo;<span>Cool guy with cool sunglases.</span>&laquo;</p>
+      <p class="mx-auto font-serif text-3xl italic max-w-screen-sm">&raquo;<span>There is not a lot of talented programmers who are strong in communication. You are definitely one of them.</span>&laquo;</p>
       <footer>
-        <img class="w-10 h-10 mx-auto mt-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=VhR4opO16h&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        <div class="mt-2 text-lg font-semibold">Tom Sawyer</div>
-        <div class="text-gray-600">CEO Superduper Company</div>
+        <div class="__testimonial-photo">
+          {% image "./src/images/karin-upton.jpg", "photo of Karin Upton", "10em" %}
+        </div>
+        <div class="mt-2 text-lg font-semibold">Karin Upton</div>
+        <div class="text-gray-600">Former team member</div>
       </footer>
     </blockquote>
   </div>
