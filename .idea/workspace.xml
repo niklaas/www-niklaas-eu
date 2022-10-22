@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/scss/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global.css" afterDir="false" />
+    <list default="true" id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="chore: commit Webstorm workspace settings">
+      <change afterPath="$PROJECT_DIR$/.envrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shell.nix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,26 +14,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="21F2BrfdG6iEYvC1qT3JyoPkan5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/Users/niklaas/git/www-niklaas-eu&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/niklaas/git/www-niklaas-eu/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "NIXITCH_NIXPKGS_CONFIG": "",
+    "NIXITCH_NIX_CONF_DIR": "",
+    "NIXITCH_NIX_OTHER_STORES": "",
+    "NIXITCH_NIX_PATH": "",
+    "NIXITCH_NIX_PROFILES": "",
+    "NIXITCH_NIX_REMOTE": "",
+    "NIXITCH_NIX_USER_PROFILE_DIR": "",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/niklaas/git/www-niklaas-eu",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/niklaas/git/www-niklaas-eu/node_modules/prettier",
+    "settings.editor.selected.configurable": "org.nixos.idea.settings.NixIDEASettings"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -59,7 +74,25 @@
       <updated>1637522382111</updated>
       <workItem from="1637522383535" duration="154000" />
       <workItem from="1666463548749" duration="981000" />
+      <workItem from="1666465331910" duration="1852000" />
+      <workItem from="1666467728851" duration="583000" />
+      <workItem from="1666468324141" duration="434000" />
     </task>
+    <task id="LOCAL-00001" summary="chore: commit Webstorm workspace settings">
+      <created>1666465430609</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666465430609</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore: commit Webstorm workspace settings">
+      <created>1666465636556</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666465636556</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,5 +108,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore: commit Webstorm workspace settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: commit Webstorm workspace settings" />
   </component>
 </project>
