@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="chore: add node using nix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nvmrc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,8 @@
       <workItem from="1666467728851" duration="583000" />
       <workItem from="1666468324141" duration="565000" />
       <workItem from="1666468901906" duration="835000" />
+      <workItem from="1676808926277" duration="9000" />
+      <workItem from="1676808948012" duration="148000" />
     </task>
     <task id="LOCAL-00001" summary="chore: commit Webstorm workspace settings">
       <created>1666465430609</created>
