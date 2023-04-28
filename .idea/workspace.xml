@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="chore: add node using nix">
+    <list default="true" id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="chore: update webstorm setting">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/_config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_data/site.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_data/site.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/layouts/home.njk" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/layouts/home.njk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.njk" beforeDir="false" afterPath="$PROJECT_DIR$/index.njk" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,48 +34,43 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;NIXITCH_NIXPKGS_CONFIG&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_CONF_DIR&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_OTHER_STORES&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_PATH&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_PROFILES&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_REMOTE&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_USER_PROFILE_DIR&quot;: &quot;&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/niklaas/git/www-niklaas-eu&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/niklaas/git/www-niklaas-eu/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "NIXITCH_NIXPKGS_CONFIG": "",
+    "NIXITCH_NIX_CONF_DIR": "",
+    "NIXITCH_NIX_OTHER_STORES": "",
+    "NIXITCH_NIX_PATH": "",
+    "NIXITCH_NIX_PROFILES": "",
+    "NIXITCH_NIX_REMOTE": "",
+    "NIXITCH_NIX_USER_PROFILE_DIR": "",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "stage",
+    "last_opened_file_path": "/Users/niklaas/git/www-niklaas-eu",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/niklaas/git/www-niklaas-eu/node_modules/prettier",
+    "settings.editor.selected.configurable": "com.intellij.deno.DenoConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="npm i" />
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+    <configuration name="Deno: " type="DenoConfigurationType" nameIsGenerated="true" programParameters="task lume">
+      <option name="applicationArguments" value="--serve" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.start" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0518399b-d3d0-4318-ad81-3a2506ae0f1b" name="Changes" comment="" />
@@ -83,6 +86,17 @@
       <workItem from="1666468901906" duration="835000" />
       <workItem from="1676808926277" duration="9000" />
       <workItem from="1676808948012" duration="148000" />
+      <workItem from="1676809120164" duration="720000" />
+      <workItem from="1678996139163" duration="49000" />
+      <workItem from="1681582744285" duration="110000" />
+      <workItem from="1681582890784" duration="131000" />
+      <workItem from="1681583060564" duration="93000" />
+      <workItem from="1681583167987" duration="41000" />
+      <workItem from="1681583217819" duration="1007000" />
+      <workItem from="1681671088016" duration="125000" />
+      <workItem from="1682701138014" duration="43000" />
+      <workItem from="1682701189489" duration="60000" />
+      <workItem from="1682701270342" duration="1816000" />
     </task>
     <task id="LOCAL-00001" summary="chore: commit Webstorm workspace settings">
       <created>1666465430609</created>
@@ -112,7 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666468803877</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="chore: add deno package lock files">
+      <created>1676809187512</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676809187512</updated>
+    </task>
+    <task id="LOCAL-00006" summary="chore: update webstorm setting">
+      <created>1676809206157</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676809206157</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +160,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chore: commit Webstorm workspace settings" />
     <MESSAGE value="chore: add node using nix" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: add node using nix" />
+    <MESSAGE value="chore: add deno package lock files" />
+    <MESSAGE value="chore: update webstorm settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: update webstorm settings" />
   </component>
 </project>
