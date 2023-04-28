@@ -9,7 +9,7 @@ import netlifyCMS from "lume/plugins/netlify_cms.ts";
 import pageFind from "lume/plugins/pagefind.ts";
 
 const site = lume({
-  location: new URL("https://example.com/"),
+  location: new URL("https://www.niklaas.eu/"),
 });
 
 site
