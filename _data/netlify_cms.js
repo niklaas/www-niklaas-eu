@@ -4,8 +4,9 @@ f.defaultRequired = false;
 
 const config = {
   backend: {
-    name: "git-gateway",
-    branch: "master",
+    name: "github",
+    repo: "niklaas/www-niklaas-eu",
+    branch: "main",
   },
   media_folder: "img",
   collections: [],
@@ -13,7 +14,8 @@ const config = {
 
 // Posts
 config.collections.push(
-  f.folder("Posts", "posts")
+  f
+    .folder("Posts", "posts")
     .description("Here you can create or edit your posts")
     .preview(false)
     .create(true)
@@ -26,29 +28,27 @@ config.collections.push(
       f.boolean("Draft").required(false),
       f.markdown("Body"),
     ])
-    .toJSON(),
+    .toJSON()
 );
 
 const pageFields = [
   f.string("Title"),
   f.string("Url"),
   f.markdown("Body"),
-  f.object("Menu", [
-    f.boolean("Visible"),
-    f.number("Order"),
-  ]),
+  f.object("Menu", [f.boolean("Visible"), f.number("Order")]),
   f.hidden("templateClass"),
   f.hidden("layout"),
 ];
 
 // Individual pages
 config.collections.push(
-  f.files("Pages")
+  f
+    .files("Pages")
     .description("Here you can edit your individual pages")
     .preview(false)
     .file("About", "about.md", pageFields)
     .file("404", "404.md", pageFields)
-    .toJSON(),
+    .toJSON()
 );
 
 export default config;

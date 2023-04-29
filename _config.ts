@@ -32,6 +32,6 @@ site
   }))
   .use(slugifyUrls({ alphanumeric: false }))
   .use(resolveUrls())
-  .use(netlifyCMS({ netlifyIdentity: true }));
+  .use(netlifyCMS({ netlifyIdentity: false,  local: false }));
 
 export default site;
