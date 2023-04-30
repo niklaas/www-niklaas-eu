@@ -7,6 +7,7 @@ const config = {
     name: "github",
     repo: "niklaas/www-niklaas-eu",
     branch: "main",
+    api_root: "https://api.github.com",
   },
   media_folder: "img",
   collections: [],
