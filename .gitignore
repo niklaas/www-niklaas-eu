@@ -1,7 +1,0 @@
-_site
-_bin
-node_modules
-.idea/workspace.xml
-.idea/tasks.xml
-/.idea/jsLibraryMappings.xml
-/.idea/prettier.xml
