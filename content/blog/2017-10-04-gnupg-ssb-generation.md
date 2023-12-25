@@ -12,7 +12,7 @@ When generating a new key subkey, don't copy your master key to your local file
 system. Rather tell GnuPG where your master key is and edit it there. *Make
 sure that you use GnuPG version 2.*
 
-```{shell}
+```sh
 $ export GNUPGHOME=<where your master key is>
 $ gpg --edit-key <your email address>
 ```
@@ -24,7 +24,7 @@ with `addkey` and the following menus. Quit and save the new subkeys with
 
 Export the keys with the following command:
 
-```{shell}
+```sh
 $ gpg --armor --export-secret-subkeys > secret-subkeys.asc
 ```
 

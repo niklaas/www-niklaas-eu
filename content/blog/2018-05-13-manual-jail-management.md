@@ -30,7 +30,7 @@ ideas: how to build the initial folder structure, combining "thinjails" and
 
 I decided to store the jails in `/usr/local/jails`. Create the following folders:
 
-```{shell}
+```sh
 # mkdir -p /usr/local/jails/templates
 # mkdir -p /usr/local/jails/thinjails
 ```
@@ -43,7 +43,7 @@ To fetch a base system, find the appropriate `base.txz` under [FreeBSD's FTP
 mirros][freebsd-mirror], and run the following command. Obviously, these
 commands depend on the version you have chosen.
 
-```{shell}
+```sh
 # fetch http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/10.4-RELEASE/base.txz
 # mkdir /usr/local/jails/templates/base-10.4-RELEASE
 # tar -xJf base.txz -C /usr/local/jails/templates/base-10.4-RELEASE
@@ -51,7 +51,7 @@ commands depend on the version you have chosen.
 
 We should also update to the latest patched version:
 
-```{shell}
+```sh
 # UNAME_r=10.4-RELEASE freebsd-update -b /usr/local/jails/templates/base-10.4-RELEASE fetch
 # UNAME_r=10.4-RELEASE freebsd-update -b /usr/local/jails/templates/base-10.4-RELEASE install
 ```
@@ -62,7 +62,7 @@ receive the environment variable.
 In the next step you move what will be local each jail to a template that we
 will use for each thinjail:
 
-```{shell}
+```sh
 # mkdir -p /usr/local/jails/templates/jail-10.4-RELEASE/usr/home
 # mv /usr/local/jails/templates/base-10.4-RELEASE/{etc,root,tmp,var,jail-10.4-RELEASE}
 # mv /usr/local/jails/templates/base-10.4-RELEASE/{usr/local,jail-10.4-RELEASE/usr}
@@ -72,12 +72,12 @@ For each jail `base-10.4-RELEASE` will be their root and *copies* of
 `jail-10.4-RELEASE` will be mounted in it under `jail`. So we need to create
 symlinks in both `base-10.4-RELEASE` and `jail-10.4-RELEASE` appropriately.
 
-```{shell}
+```sh
 # cd /usr/local/jails/templates/jail-10.4-RELEASE
 # ln -s usr/home
 ```
 
-```{shell}
+```sh
 # cd /usr/local/jails/templates/base-10.4-RELEASE
 # mkdir jail
 # ln -s jail/etc

@@ -34,7 +34,7 @@ most fundamental tools for everyone who works on the command line. For example,
 to find all R files underneath your local R library that include R's pipe
 operator execute the following:[^short-find]
 
-```{bash}
+```bash
 find ~/R -name '*.R' -print0 | xargs -0 grep '%>%' | head
 ```
 
@@ -56,20 +56,20 @@ Let's say you have two functions `f1` and `f2`, and some data `x`. If you were
 to apply the first and the second function to x *one after the other* you would
 probably do something like the following:
 
-```{r, eval=FALSE}
+```r
 y <- f2(f1(x))
 ```
 
 Or, something like this:
 
-```{r, eval=FALSE}
+```r
 x <- f1(x)
 y <- f2(x)
 ```
 
 Using the pipe operator `%>%` you can simplify the code:
 
-```{r, eval=FALSE}
+```r
 y <- x %>% f1 %>% f2
 ```
 
@@ -83,7 +83,7 @@ Take a more complex example with some example data from `iris`.  Let's say you
 want to inspect species `setosa` and calculate the mean of `Sepal.Length`.
 Traditionally, you would do something like the following:
 
-```{r}
+```r
 data(iris)
 idx <- iris$Species == "setosa"
 setosa <- iris[idx, ]
@@ -93,12 +93,12 @@ mean(setosa$Sepal.Length)
 With the pipe operator you can simplify the task by combining dplyr's `filter`
 and `summarize` functions.
 
-```{r, message=FALSE}
+```r
 library(magrittr)
 library(dplyr)
 ```
 
-```{r}
+```r
 iris %>%
   filter(Species == "setosa") %>%
   summarize(mean:  mean(Sepal.Length)) %>%
@@ -124,7 +124,7 @@ Obviously, the pipe operator is only useful if functions exist that are
 compatible to piping. Compatibility is guaranteed by writing functions with the
 first argument being for data input, such as
 
-```{r, eval=FALSE}
+```r
 pipe_function <- function(.data, ...) {
     # do something here
 
@@ -138,7 +138,7 @@ will be cluttered with `%>%`'s internals. Thus, it makes sense to split the
 pipe in reasonable sizes. This way you will be able to investigate each part of
 the pipe on its own and trace errors more easily.
 
-```{r}
+```r
 setosa <- iris %>%
   filter(Species == "setosa")
 

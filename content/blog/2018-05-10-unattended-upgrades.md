@@ -11,7 +11,7 @@ can reduce time for maintenance a lot. To do so, install the little helpers
 
 <!-- more -->
 
-```{shell}
+```sh
 $ apt install unattended-upgrades apt-listchanges
 ```
 
@@ -19,7 +19,7 @@ Now make sure to set the following entries in the configuration file. This way
 the result of the upgrade process is sent to `root`'s inbox. We further
 configure to reboot automatically at 02:00 if upgrades require a restart.
 
-```{conf}
+```conf
 # /etc/apt/apt.conf.d/50unattended-upgrades
 Unattended-Upgrade::Mail "root";
 Unattended-Upgrade::Automatic-Reboot "true";
@@ -30,7 +30,7 @@ We should also configure crontab to send a notification once the system rebooted
 successfully. This way we can make sure that both upgrading and rebooting were
 successful.
 
-```{crontab}
+```
 # crontab -e
 @reboot echo "Subject: Rebooted at $(date -Iseconds)" | /usr/sbin/sendmail root
 ```

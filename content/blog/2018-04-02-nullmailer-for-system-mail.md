@@ -58,7 +58,7 @@ and configure nullmailer to use the appropriate port and username/password
 combination. `mail.example.com` is the SMTP server while `smtp` specifies the
 chosen protocol.
 
-```{conf}
+```conf
 # /etc/nullmailer/remotes
 mail.example.com smtp --port=587 --starttls --user=username --pass=secret
 ```
@@ -68,7 +68,7 @@ mail you receive on the external account into subfolders. This can be achieved
 quite easily by so-called recipient delimiters, the plus sign `+` being a quite
 prominent one.[^recipient-delimiter] The following is a general example.
 
-```{conf}
+```conf
 # /etc/nullmailer/adminaddr
 account+hostname@service.tld
 ```
@@ -84,14 +84,14 @@ as a unique tag, and filter the received mail on the external account accordingl
 For system mail that doesn't provide a fully qualified domain e.g., mail sent to
 `root@localhost` you should provide the default domain in file `defaultdomain`.
 
-```{conf}
+```conf
 # /etc/nullmailer/defaultdomain
 myhostname.tld
 ```
 
 You can test if everything works by using the `sendmail` command provided by nullmailer:
 
-```{shell}
+```sh
 $ echo "test" | /usr/sbin/sendmail root
 ```
 

@@ -17,20 +17,20 @@ packages](https://apt.syncthing.net/). These will also copy appropriate service
 files in `/lib/systemd/system`. Further I recommend to use a dedicated user for
 running the syncthing server.
 
-```{shell}
+```sh
 $ adduser --system --group syncthing
 ```
 
 To enable the service in systemd, run the following code:
 
-```{shell}
+```sh
 $ systemctl enable syncthing@syncthing.service
 $ systemctl enable syncthing-resume.service  # to restart syncthing after resume
 ```
 
 You can start syncthing with the following line:
 
-```{shell}
+```sh
 $ systemctl start syncthing@synching.service
 ```
 
@@ -39,7 +39,7 @@ listen on all interfaces to get remote access. This needs further configuration
 in `/home/syncthing/.config/syncthing/config.xml`. Change the following line
 removing `localhost`:
 
-```{xml}
+```xml
 <address>:8384</address>
 ```
 

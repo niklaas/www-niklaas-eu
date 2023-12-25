@@ -15,14 +15,14 @@ actually stream audio to the device -- returned the error:
 
 The root cause was a [missing package](solution-se); so I installed it it with `apt`:
 
-```{shell}
+```sh
 $ apt install pulseaudio-module-bluetooth
 ```
 
 After installing the package I made sure the module is loaded and restarted the
 bluetooth service (be aware that all current connections will be terminated).
 
-```{shell}
+```sh
 $ pactl load-module module-bluetooth-discover
 $ systemctl restart bluetooth
 ```
@@ -30,7 +30,7 @@ $ systemctl restart bluetooth
 You should also make sure the module is loaded after reboot. If the following
 command returns sensible information that should be the case.
 
-```{shell}
+```sh
 $ grep bluetooth /etc/pulse/default.pa
 ```
 

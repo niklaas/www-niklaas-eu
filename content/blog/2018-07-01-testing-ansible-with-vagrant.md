@@ -29,7 +29,7 @@ end
 We then download Ansible's Vagrant Dynamic Inventory to configure Ansible hosts
 through the Vagrantfile listed above automatically.
 
-```shell
+```sh
 # wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/vagrant.py
 # chmod +x vagrant.py
 ```
@@ -39,7 +39,7 @@ all`. As you will see in the output, these machines are grouped under
 "vagrant". Thus, provided a playbook file that sets "vagrant" as its host, you
 can test your playbook with
 
-```shell
+```sh
 # ansible-playbook -i ./vagrant.py playbook-to-test.yml
 ```
 

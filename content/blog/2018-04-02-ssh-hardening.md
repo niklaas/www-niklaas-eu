@@ -27,7 +27,7 @@ keyboard-interactive authentication support two sequential
 passwords?](https://unix.stackexchange.com/a/241240/74540)] Thus, you should
 enable it with the following line:
 
-```{conf}
+```conf
 ChallengeResponseAuthentication yes
 ```
 
@@ -36,14 +36,14 @@ sequence in which they must be provided in `AuthenticationMethods`. You must
 separate the methods with a comma (`,`). To ask for a public key first and
 subsequently require the password of the user, you can use the following line:
 
-```{conf}
+```conf
 AuthenticationMethods publickey,keyboard-interactive:pam
 ```
 
 In the same file you can change (or add) the following line to disable
 authentication as the root user:
 
-```{conf}
+```conf
 PermitRootLogin no
 ```
 
@@ -57,7 +57,7 @@ the user's name and specify possible authentication methods separating them with
 a space ( ) -- and not a comma. In the following example, the user `git` may
 authenticate through *either* public key *or* password.
 
-```{conf}
+```conf
 Match User git
     AuthenticationMethods publickey keyboard-interactive:pam
 ```
@@ -65,7 +65,7 @@ Match User git
 To limit `git`'s available commands to those of Git, change the shell of the
 user to `git-shell`.
 
-```{shell}
+```sh
 $ sudo chsh -s $(command -v git-shell) git
 ```
 
@@ -74,6 +74,6 @@ On FreeBSD machines it isn't necessary to specifically enable
 need to reference to [PAM](http://www.linux-pam.org/). Thus the following is
 sufficient:
 
-```{conf}
+```conf
 AuthenticationMethods publickey,keyboard-interactive
 ```

@@ -7,7 +7,7 @@ tags: ["vim", "Lua", "Python", "Debian"]
 I prefer the most updated version of `vim` these days. First, you must make
 sure that you have installed the required dependencies for building.
 
-```{shell}
+```sh
 $ apt install \
     libx11-dev \
     libxt-dev
@@ -18,7 +18,7 @@ $ apt install \
 If you want support for `lua` you need to link to some library files in
 `/usr/include`.
 
-```{shell}
+```sh
 # Fix lua paths
 $ ln -s /usr/include/lua5.3 /usr/include/lua
 $ ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
@@ -31,7 +31,7 @@ makes sense to configure `--with-x` to have access to the system clipboards in
 recommended if you want to notice missing dependencies that are required for
 the provided configuration.
 
-```{shell}
+```sh
 $ ./configure \
     --enable-pythoninterp \
     --enable-python3interp \
@@ -47,14 +47,14 @@ configuration. If that is the case (or if you change the arguments of
 `./configure`) remember to run the following command. This will clean the
 cached results of the configuration run previously.
 
-```{shell}
+```sh
 $ make distclean
 ```
 
 When configuring the built process was successful, you can start the built
 process and install the compiled files.
 
-```{shell}
+```sh
 $ make
 $ make install
 ```
@@ -66,7 +66,7 @@ features.
 If you want to compile from source again, first, run the following command to
 clean the build directory.
 
-```{shell}
+```sh
 $ make clean
 ```
 

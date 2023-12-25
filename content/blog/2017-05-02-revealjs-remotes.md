@@ -25,7 +25,7 @@ discussed on the web, none of them solves the problem entirely. Either they
 remap the Up and Down or the Left and Right arrow-keys. A complete solution
 remaps all of them:
 
-```{JavaScript}
+```JavaScript
 // Either Reveal.initialize({ ... or
 Reveal.configure({
     keyboard: {

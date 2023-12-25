@@ -21,14 +21,14 @@ While the main configuration `/etc/tinc/<vpnname>/tinc.conf` can remain as it
 is, I had to put more energy into setting up the tunnel device. Check out the
 following files:
 
-```{conf}
+```conf
 # /etc/tinc/<vpnname>/tinc.conf
 Name: example_name
 ConnectTo: public_server
 Device: /dev/net/tun  # for Debian
 ```
 
-```{sh}
+```sh
 # /etc/tinc/<vpnname>/tinc-up
 #!/bin/sh
 ip link set $INTERFACE up
@@ -49,7 +49,7 @@ the fourth block of the generated address.
    to on the tunnel. Otherwise you would need to add routes to the foreign
    subnets manually. See below:
 
-```{conf}
+```conf
 # /etc/tinc/<vpnname>/example_name
 Subnet: 10.<IP>.0.0/16
 Subnet: fd83:10d3:98f3:<IP>::/64
@@ -61,7 +61,7 @@ interchange all public keys between the hosts.
 After starting tinc on all hosts, try to `ping` each host in the network. For
 debugging, you can use the following command to launch `tincd` directly:
 
-```{shell}
+```sh
 $ tincd -n <vpnname> -D
 ```
 
@@ -73,7 +73,7 @@ Finally, to launch `tincd` when booting, enable it in `systemd` with the
 following command. Note that you need to provide the name of the tinc network,
 replacing `<vpnname>` in the following command:
 
-```{shell}
+```sh
 $ systemctl enable tinc
 $ systemctl enable tinc@<vpnname>
 ```
