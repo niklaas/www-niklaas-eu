@@ -9,7 +9,7 @@ tags: ["Unix", "Mail", "dma", "nullmailer", "sysadmin"]
  credentials in `/etc/dma/auth.conf` was wrong.
 
 Not a long time ago, in a [previous
-post](@/2018-04-02-nullmailer-for-system-mail.md), I recommended to
+post](posts/2018-04-02-nullmailer-for-system-mail.md), I recommended to
 use [nullmailer][nullmailer] for a simple send-only mail transfer
 agent to relay system mail. I must revise that advice because of two
 reasons:

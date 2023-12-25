@@ -6,7 +6,7 @@ tags: ["sysadmin", "Unix", "Debian", "Mail", "nullmailer"]
 ---
 
 **Update:** See this [updated
-post](@/2018-04-08-from-nullmailer-to-dma.md) on why you should *not*
+post](posts/2018-04-08-from-nullmailer-to-dma.md) on why you should *not*
 use nullmailer but dma for relaying system mail.
 
 <!-- more -->
