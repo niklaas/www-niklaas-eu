@@ -19,6 +19,8 @@ e.g.,
     pinentry-gtk2
     pinentry-tty
 
+<!-- more -->
+
 It makes sense to open a graphical interface when `pinentry` is called by a
 graphical program (e.g., when encrypting an email composed in Thunderbird) and
 a non-graphical interface when `pinentry` is called by a non-graphical program

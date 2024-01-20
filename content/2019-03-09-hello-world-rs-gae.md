@@ -9,6 +9,8 @@ The article provides some background to the example project
 deploy a simple "Hello World!" server on [Google App Engine][gae] served by a
 static Rust binary.
 
+<!-- more -->
+
 Nowadays there is no longer need to supervise servers for providing a
 performant web application. Since containerization, Docker, Kubernetes and the
 like have become mainstream, more and more cloud providers offer managed

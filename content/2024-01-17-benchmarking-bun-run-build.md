@@ -16,6 +16,8 @@ The situation becomes more challenging when I need to work on JSONs, which are m
 where I often work in. Usually, I opted for `jq` to parse JSON into line-based data, but I keep forgetting its 
 syntax, which also can turn out complex and difficult to read.
 
+<!-- more -->
+
 So far, the intricacies of getting JavaScript code that is meant for the browser to run using node.js on the command 
 line, kept me from actually considering this option. Usually, I would run into issues because the code I want to 
 reuse for a quick command-line session used browser APIs that don't work in node.js.

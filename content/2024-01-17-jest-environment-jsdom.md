@@ -20,6 +20,8 @@ supports more than one test environment.
     (...)
 ```
 
+<!-- more -->
+
 As it turned out, the module of the function under test pulled in some other function that used `window`. I fixed 
 the error by changing the import from a barrel import to an individual file import, but learned that there is an easy 
 way to change the jest environment per file using the following JsDoc.
