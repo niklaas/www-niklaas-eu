@@ -1,7 +1,8 @@
 ---
 title: "Using a proper pinentry remotely when running X"
 date: 2019-03-10T16:59:49+01:00
-tags: ["Debian", "ssh", "pinentry", "gpg", "GnuPG"]
+taxonomies:
+  tags: ["Debian", "ssh", "pinentry", "gpg", "GnuPG"]
 ---
 
 The application `pinentry` opens when you need to provide your password for

@@ -2,7 +2,9 @@
 author: "Niklaas Baudet von Gersdorff"
 title: "Using the jsdom test environment"
 date: 2024-01-17T15:03:42+02:00
-tags: ["javascript"]
+
+taxonomies:
+  tags: ["javascript"]
 ---
 
 Recently, I started working on a new JavaScript codebase that uses the Jest test runner. After stumbling upon the 

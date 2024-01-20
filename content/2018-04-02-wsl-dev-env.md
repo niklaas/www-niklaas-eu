@@ -2,7 +2,8 @@
 title: "Setting up a Development Environment in Windows's WSL"
 date: 2018-04-02T18:40:08+02:00
 
-tags: ["dev", "Windows", "WSL", "mintty"]
+taxonomies:
+  tags: ["dev", "Windows", "WSL", "mintty"]
 ---
 
 Setting up a development environment had always been difficult but became much

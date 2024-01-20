@@ -1,7 +1,8 @@
 ---
 title: "VNC and two Xfce sessions"
 date: 2018-10-11
-tags: ["vnc", "xfce4"]
+taxonomies:
+  tags: ["vnc", "xfce4"]
 ---
 
 I ran into the following errors when trying to start another Xfce session for

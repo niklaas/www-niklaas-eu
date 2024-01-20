@@ -2,7 +2,8 @@
 title: "Nullmailer for System Mail"
 date: 2018-04-02T17:39:16+02:00
 
-tags: ["sysadmin", "Unix", "Debian", "Mail", "nullmailer"]
+taxonomies:
+  tags: ["sysadmin", "Unix", "Debian", "Mail", "nullmailer"]
 ---
 
 **Update:** See this [updated

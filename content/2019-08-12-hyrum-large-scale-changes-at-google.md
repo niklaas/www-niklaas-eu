@@ -4,7 +4,8 @@ title: "'Large-Scale Changes at Google...' by Hyrum Wright"
 date: 2019-08-12T20:30:40+02:00
 draft: true
 
-tags: ["Hyrum Wright", "bugs", "summary", "Google", "software design"]
+taxonomies:
+  tags: ["Hyrum Wright", "bugs", "summary", "Google", "software design"]
 ---
 
 Some time ago I stumbled upon Hyrum Wright's talk "Large-Scale Changes

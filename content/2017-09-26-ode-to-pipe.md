@@ -4,7 +4,8 @@ author: "Niklaas Baudet von Gersdorff"
 date: 2017-09-26T19:31:06+02:00
 slug: "ode-to-pipe"
 
-tags: ["R", "tidyverse", "magrittr"]
+taxonomies:
+  tags: ["R", "tidyverse", "magrittr"]
 ---
 
 

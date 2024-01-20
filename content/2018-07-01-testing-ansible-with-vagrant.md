@@ -2,7 +2,8 @@
 title: "Testing Ansible with Vagrant"
 date: 2018-07-01T20:09:19+02:00
 
-tags: ["Ansible", "Vagrant", "sysadmin", "automation"]
+taxonomies:
+  tags: ["Ansible", "Vagrant", "sysadmin", "automation"]
 ---
 
 When writing Ansible playbooks, it makes sense to test them on vanilla systems.

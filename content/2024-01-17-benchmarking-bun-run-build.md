@@ -3,7 +3,8 @@ author: "Niklaas Baudet von Gersdorff"
 title: "Benchmarking `bun run` and `bun build` with `hyperfine`"
 date: 2024-01-17T16:01:00+02:00
 
-tags: ["bun", "hyperfine", "javascript"]
+taxonomies:
+  tags: ["bun", "hyperfine", "javascript"]
 ---
 
 

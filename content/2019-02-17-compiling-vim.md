@@ -1,7 +1,8 @@
 ---
 title: "Compiling Vim with modern features"
 date: 2019-02-17
-tags: ["vim", "Lua", "Python", "Debian"]
+taxonomies:
+  tags: ["vim", "Lua", "Python", "Debian"]
 ---
 
 I prefer the most updated version of `vim` these days. First, you must make

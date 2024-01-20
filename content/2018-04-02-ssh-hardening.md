@@ -2,7 +2,8 @@
 title: "SSH hardening"
 date: 2018-04-02T16:18:24+02:00
 
-tags: ["security", "ssh", "sysadmin", "Debian", "FreeBSD"]
+taxonomies:
+  tags: ["security", "ssh", "sysadmin", "Debian", "FreeBSD"]
 ---
 
 Often I am unhappy with the default settings of the SSH daemon. Not that they

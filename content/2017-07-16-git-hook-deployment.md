@@ -3,7 +3,8 @@ title: "Easy deployment with git hooks"
 author: "Niklaas Baudet von Gersdorff"
 date: 2017-07-16T16:16:50+02:00
 
-tags: ["git"]
+taxonomies:
+  tags: ["git"]
 ---
 
 I use [Git](www.git-scm.com) for managing this website. After commiting content

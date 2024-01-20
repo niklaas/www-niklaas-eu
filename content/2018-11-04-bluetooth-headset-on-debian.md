@@ -1,7 +1,8 @@
 ---
 title: "Bluetooth Headset on Debian"
 date: 2018-11-04
-tags: ['bluetooth', 'Debian', 'audio']
+taxonomies:
+  tags: ['bluetooth', 'Debian', 'audio']
 ---
 
 I had some trouble connection my new [Teufel Rockster XS](rockster) (actually
