@@ -40,6 +40,10 @@
 
       main {
         margin-top: var(--layout-spacing);
+
+        article + article {
+          margin-top: calc(var(--layout-spacing) / 2);
+        }
       }
 
       footer {
@@ -75,8 +79,23 @@
   <body>
     <header>
       <h1>{{ config.extra.theme_title }}</h1>
+      <nav>
+        <ul>
+          <li>Tags</li>
+          <li>About</li>
+          <li>Imprint</li>
+        </ul>
+      </nav>
     </header>
-    <main></main>
+    <main>
+      {% set blog_posts = get_section(path="blog/_index.md") %}
+      {% for post in blog_posts.pages | slice(end=5) %}
+      <article>
+        <h1>{{ post.title }}</h1>
+        {{ post.summary | safe }}
+      </article>
+      {% endfor %}
+    </main>
     <footer></footer>
   </body>
 </html>
