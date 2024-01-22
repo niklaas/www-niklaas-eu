@@ -1,0 +1,107 @@
+/*
+ * Credits go to https://smolcss.dev/#smol-document-styles for showing that you
+ * no longer need CSS pre-processors these days
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --background-color: whitesmoke;
+    --color: #222;
+    --link-color: navy;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-color: #222;
+    --color: whitesmoke;
+    --link-color: dodgerblue;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: clamp(10pt, 2vw, 14pt);
+  line-height: 1.5;
+  color: var(--color);
+  background-color: var(--background-color);
+}
+
+body > * {
+  --layout-spacing: max(8vh, 3rem);
+  --max-width: 70ch;
+  width: min(100%, var(--max-width));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header > nav {
+  margin-top: 1em;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      display: inline;
+    }
+
+    li + li {
+      margin-left: 1em;
+    }
+  }
+}
+
+main {
+  margin-top: var(--layout-spacing);
+
+  article + article {
+    margin-top: calc(var(--layout-spacing) / 2);
+  }
+
+  article + p {
+    margin-top: var(--layout-spacing);
+  }
+}
+
+footer {
+  margin-top: auto;
+  padding-top: var(--layout-spacing);
+}
+
+footer p {
+  border-top: 1px solid #ccc;
+  padding-top: 0.25em;
+  font-size: 0.9rem;
+  color: #767676;
+}
+
+:is(h1, h2, h3) {
+  line-height: 1.2;
+}
+
+:is(h2, h3):not(:first-child) {
+  margin-top: 2em;
+}
+
+article * + * {
+  margin-top: 1em;
+}
+
+article pre {
+  overflow-x: auto;
+}
+
+a {
+  color: var(--link-color);
+  text-underline-offset: 0.15em;
+}
