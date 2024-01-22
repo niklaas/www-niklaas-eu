@@ -61,6 +61,10 @@
       article + article {
         margin-top: calc(var(--layout-spacing) / 2);
       }
+
+      article + p {
+        margin-top: var(--layout-spacing);
+      }
     }
 
     footer {
@@ -116,6 +120,7 @@
     {{ post.summary | safe }}
   </article>
   {% endfor %}
+  <p>Read all posts</p>
 </main>
 <footer></footer>
 </body>
