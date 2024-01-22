@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - mintty</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/mintty/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-04-02T18:40:08+02:00</updated>
+    <id>https://www.niklaas.eu/tags/mintty/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Setting up a Development Environment in Windows&#x27;s WSL</title>
+        <published>2018-04-02T18:40:08+02:00</published>
+        <updated>2018-04-02T18:40:08+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/wsl-dev-env/"/>
+        <id>https://www.niklaas.eu/wsl-dev-env/</id>
+        
+        <summary type="html">&lt;p&gt;Setting up a development environment had always been difficult but became much
+easier with the lunch of &lt;a href=&quot;http:&#x2F;&#x2F;wsl-guide.org&#x2F;en&#x2F;latest&#x2F;background.html&quot;&gt;Windows Subsystem for
+Linux&lt;&#x2F;a&gt; (WSL). Because Windows&#x27;s
+default terminal &lt;code&gt;cmd&lt;&#x2F;code&gt; is a shame and I prefer using &lt;a href=&quot;https:&#x2F;&#x2F;www.zsh.org&quot;&gt;zsh&lt;&#x2F;a&gt;
+over &lt;a href=&quot;https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;bash&#x2F;&quot;&gt;bash&lt;&#x2F;a&gt;, I recommend to do the following:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

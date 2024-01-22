@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - SSH hardening</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;ssh-hardening&#x2F;">SSH hardening</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-04-02</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Often I am unhappy with the default settings of the SSH daemon. Not that they
+provide a security threat to the systems but you can make it even more difficult
+for an attacker to get access to a system. In addition to the default settings I
+always enable the following:</p>
+<span id="continue-reading"></span>
+<ul>
+<li>Authentication with both public-key and passphrase</li>
+<li>Disable login with <code>root</code> user</li>
+<li>Use <code>git-shell</code> for Git account</li>
+</ul>
+<p>In the following I shortly explain the necessary steps to enable these features
+on a <a href="https://www.debian.org">Debian</a> system. At the end of the post, I provide
+a similar configuration for <a href="https://www.freebsd.org">FreeBSD</a> systems.</p>
+<p>We take a look at the SSH server configuration in <code>/etc/ssh/sshd_config</code>. By
+default, Debian disables <code>ChallengeResponseAuthentication</code>. However, it's needed
+to allow multiple authentication methods.^[<a href="https://unix.stackexchange.com/a/241240/74540">StackExchange: Does
+keyboard-interactive authentication support two sequential
+passwords?</a>] Thus, you should
+enable it with the following line:</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#bf616a;">ChallengeResponseAuthentication </span><span style="color:#d08770;">yes
+</span></code></pre>
+<p>Once enabled, you can specify the required authentication mechanism and the
+sequence in which they must be provided in <code>AuthenticationMethods</code>. You must
+separate the methods with a comma (<code>,</code>). To ask for a public key first and
+subsequently require the password of the user, you can use the following line:</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#bf616a;">AuthenticationMethods </span><span>publickey,keyboard-interactive:pam
+</span></code></pre>
+<p>In the same file you can change (or add) the following line to disable
+authentication as the root user:</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#bf616a;">PermitRootLogin </span><span style="color:#d08770;">no
+</span></code></pre>
+<p>For some users you might want to disable public key authentication. This may be
+interesting for an account that you only use to share Git repositories. Such an
+account should be secured by using <code>git-shell</code> as its default shell anyway. (We
+will discuss this in the next step.)</p>
+<p>To disable multiple authentication methods for a specific user, you can match by
+the user's name and specify possible authentication methods separating them with
+a space ( ) -- and not a comma. In the following example, the user <code>git</code> may
+authenticate through <em>either</em> public key <em>or</em> password.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#bf616a;">Match </span><span>User git
+</span><span>    </span><span style="color:#bf616a;">AuthenticationMethods </span><span>publickey keyboard-interactive:pam
+</span></code></pre>
+<p>To limit <code>git</code>'s available commands to those of Git, change the shell of the
+user to <code>git-shell</code>.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> sudo chsh</span><span style="color:#bf616a;"> -s </span><span>$(</span><span style="color:#96b5b4;">command </span><span style="color:#bf616a;">-v</span><span> git-shell) git
+</span></code></pre>
+<p>On FreeBSD machines it isn't necessary to specifically enable
+<code>ChallengeResponseAuthentication</code> because it's enabled by default. Neither you
+need to reference to <a href="http://www.linux-pam.org/">PAM</a>. Thus the following is
+sufficient:</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#bf616a;">AuthenticationMethods </span><span>publickey,keyboard-interactive
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/security/">#security</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/ssh/">#ssh</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/freebsd/">#FreeBSD</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;wsl-mount&#x2F;">‹ Mount external drives in WSL</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;deferring-functions-for-on-entry-actions&#x2F;">Deferring functions for &quot;on entry&quot; actions ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

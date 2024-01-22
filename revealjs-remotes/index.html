@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - reveal.js and remote pointers</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;revealjs-remotes&#x2F;">reveal.js and remote pointers</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2017-05-14</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p><a href="https://github.com/hakimel/reveal.js">Reveal.js</a> is a great framework for
+creating presentations based on HTML5, CSS, and JavaScript. There is only one
+thing that is a bit puzzling: the default key bindings do not work with remote
+pointers.</p>
+<span id="continue-reading"></span>
+<p>Remote pointers issue arrow-keys, however the default key bindings for moving
+back and forth in <code>reveal.js</code> slide decks are <code>Shift-Space</code> and <code>Space</code>. The
+arrow keys are used for navigating between slides <em>independently from their
+logical sequence</em>. As a consequence, in two-dimensional slide decks, using a
+remote will erroneously skip slides.</p>
+<p>While there are <a href="http://stackoverflow.com/a/19628928/2300759">several</a>
+<a href="http://stackoverflow.com/a/35606596/2300759">solutions</a> to the problem
+discussed on the web, none of them solves the problem entirely. Either they
+remap the Up and Down or the Left and Right arrow-keys. A complete solution
+remaps all of them:</p>
+<pre data-lang="JavaScript" style="background-color:#2b303b;color:#c0c5ce;" class="language-JavaScript "><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#65737e;">// Either Reveal.initialize({ ... or
+</span><span style="color:#ebcb8b;">Reveal</span><span>.</span><span style="color:#bf616a;">configure</span><span>({
+</span><span>    keyboard: {
+</span><span>        </span><span style="color:#d08770;">37</span><span>: &#39;</span><span style="color:#a3be8c;">prev</span><span>&#39;,
+</span><span>        </span><span style="color:#d08770;">38</span><span>: &#39;</span><span style="color:#a3be8c;">prev</span><span>&#39;,
+</span><span>        </span><span style="color:#d08770;">39</span><span>: &#39;</span><span style="color:#a3be8c;">next</span><span>&#39;,
+</span><span>        </span><span style="color:#d08770;">40</span><span>: &#39;</span><span style="color:#a3be8c;">next</span><span>&#39;
+</span><span>    }
+</span><span>})
+</span></code></pre>
+<p>One final thought: At first glance, remapping the arrow keys seems inconvenient
+because when in &quot;overview-mode&quot; (by pressing <code>o</code>) navigating through the slides
+using the arrow-keys is no longer possible. But since reveal.js is quite
+hack-ish and thought out, the vim key bindings <code>h</code>, <code>j</code>, <code>k</code>, and <code>l</code> supplement
+the arrow keys. Thus, in overview-mode you can use these keys to navigate left,
+down, up, and right.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/reveal-js/">#reveal.js</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;freebsd-bluetooth-keyboard&#x2F;">‹ FreeBSD and bluetooth keyboards</a>
+                    
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

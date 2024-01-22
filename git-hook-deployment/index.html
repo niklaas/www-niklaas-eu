@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Easy deployment with git hooks</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;git-hook-deployment&#x2F;">Easy deployment with git hooks</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2017-07-16</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>I use <a href="https://www.niklaas.eu/git-hook-deployment/www.git-scm.com">Git</a> for managing this website. After commiting content
+locally, I push it to the remote side. Traditionally, then, I would <code>ssh</code>
+into remote and copy the repositories content somewhere under <code>/var/www</code>.
+This was before I found out about a very handy feature implemented in Git
+called &quot;hooks&quot;.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<span id="continue-reading"></span>
+<p>Hooks can automate tasks, such as deploying the repositories content on
+the integration server when changes are pushed to the &quot;live&quot; branch. For
+this to work, the following script must be put in the <code>hooks</code> folder under
+<code>.git</code> (or directly under <code>hooks</code> if it's a <code>--bare</code> repository) and must
+be named <code>post-receive</code>.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>#!/bin/sh
+</span><span>
+</span><span>deploydir=/var/www
+</span><span>
+</span><span>while read oldrev newrev refname
+</span><span>do
+</span><span>    branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+</span><span>    if [ &quot;$branch&quot; == &quot;master&quot; ]
+</span><span>    then
+</span><span>        git --work-tree=$deploydir checkout -f $branch
+</span><span>    fi
+</span><span>done
+</span></code></pre>
+<p>Obviously, this is just one of many possible tasks that can be achieved
+with hooks.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>For more information on this feature see <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git's official handbook</a>.</p>
+</div>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/git/">#git</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;samba-masks&#x2F;">‹ Samba&#x27;s file and directory masks</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;freebsd-bluetooth-keyboard&#x2F;">FreeBSD and bluetooth keyboards ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Using a proper pinentry remotely when running X</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;pinentry-x-remote&#x2F;">Using a proper pinentry remotely when running X</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-03-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>The application <code>pinentry</code> opens when you need to provide your password for
+decrypting your GnuPG key. You can install different interfaces for providing
+the password via <code>pinentry</code>. There are graphical and non-graphical variants
+e.g.,</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ dpkg -l | grep pinentry
+</span><span>pinentry-curses
+</span><span>pinentry-gnome3
+</span><span>pinentry-gtk2
+</span><span>pinentry-tty
+</span></code></pre>
+<span id="continue-reading"></span>
+<p>It makes sense to open a graphical interface when <code>pinentry</code> is called by a
+graphical program (e.g., when encrypting an email composed in Thunderbird) and
+a non-graphical interface when <code>pinentry</code> is called by a non-graphical program
+(e.g., when signing a commit through <code>git commit</code>). That said, this is not
+default behaviour.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>update-alternatives --config pinentry
+</span></code></pre>
+<p>shows the current variant used when calling <code>pinentry</code>. On newer systems this
+is <code>pinentry-gnome3</code>, which seems fine but has one caveat: it will always run a
+graphical interface if a X session is running. This is <a href="http://gnupg.10057.n7.nabble.com/GnuPGv2-amp-pinentry-on-Linux-w-remote-access-td53946.html">quite</a>
+<a href="https://lists.gnupg.org/pipermail/gnupg-users/2017-March/057967.html">problematic</a> when connecting to a machine that has a X session running
+remotely. This is indeed an issue with <code>pinentry-gnome3</code> and <a href="https://dev.gnupg.org/T2818#92294">can be avoided by
+using <code>pinentry-gtk2</code> instead</a>.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/ssh/">#ssh</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/pinentry/">#pinentry</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/gpg/">#gpg</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/gnupg/">#GnuPG</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;jest-environment-jsdom&#x2F;">‹ Using the jsdom test environment</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;hello-world-rs-gae&#x2F;">Performant and lightweight Rust API Server powered by Google App Engine ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

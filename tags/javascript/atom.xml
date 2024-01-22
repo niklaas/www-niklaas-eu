@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - javascript</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/javascript/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-01-17T16:01:00+02:00</updated>
+    <id>https://www.niklaas.eu/tags/javascript/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Benchmarking `bun run` and `bun build` with `hyperfine`</title>
+        <published>2024-01-17T16:01:00+02:00</published>
+        <updated>2024-01-17T16:01:00+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/benchmarking-bun-run-build/"/>
+        <id>https://www.niklaas.eu/benchmarking-bun-run-build/</id>
+        
+        <summary type="html">&lt;p&gt;When writing small tools that support me with my daily work, I usually opted to shell-scripting with &lt;code&gt;sh&lt;&#x2F;code&gt;, &lt;code&gt;bash&lt;&#x2F;code&gt; or 
+even &lt;code&gt;zsh&lt;&#x2F;code&gt; because I find the concept of piping text from one command to another pretty appealing. It&#x27;s a 
+straightforward and powerful concept that doesn&#x27;t require a lot of set up: most CLI tools operate on a per-line 
+basis, so it&#x27;s a bliss to combine them.&lt;&#x2F;p&gt;
+&lt;p&gt;The situation becomes more challenging when I need to work on JSONs, which are more natural in the JavaScript world, 
+where I often work in. Usually, I opted for &lt;code&gt;jq&lt;&#x2F;code&gt; to parse JSON into line-based data, but I keep forgetting its 
+syntax, which also can turn out complex and difficult to read.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Using the jsdom test environment</title>
+        <published>2024-01-17T15:03:42+02:00</published>
+        <updated>2024-01-17T15:03:42+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/jest-environment-jsdom/"/>
+        <id>https://www.niklaas.eu/jest-environment-jsdom/</id>
+        
+        <summary type="html">&lt;p&gt;Recently, I started working on a new JavaScript codebase that uses the Jest test runner. After stumbling upon the 
+following error when running some test cases in a file, I realized that I wasn&#x27;t aware of the fact that Jest 
+supports more than one test environment.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;text&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-text &quot;&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span&gt;  ● Test suite failed to run
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    The error below may be caused by using the wrong test environment, see https:&#x2F;&#x2F;jestjs.io&#x2F;docs&#x2F;configuration#testenvironment-string.
+&lt;&#x2F;span&gt;&lt;span&gt;    Consider using the &amp;quot;jsdom&amp;quot; test environment.
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    ReferenceError: window is not defined
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    (...)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Drop Nullmailer for DragonFly Mail Agent (dma)</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;from-nullmailer-to-dma&#x2F;">Drop Nullmailer for DragonFly Mail Agent (dma)</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-04-08</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p><strong>Update:</strong> In the previous version of this post, the sequence of the
+credentials in <code>/etc/dma/auth.conf</code> was wrong.</p>
+<p>Not a long time ago, in a <a href="https://www.niklaas.eu/from-nullmailer-to-dma/posts/2018-04-02-nullmailer-for-system-mail.md">previous
+post</a>, I recommended to
+use <a href="http://untroubled.org/nullmailer">nullmailer</a> for a simple send-only mail transfer
+agent to relay system mail. I must revise that advice because of two
+reasons:</p>
+<span id="continue-reading"></span>
+<ol>
+<li>It seems Nullmailer does not allow changing the sender of sent mails.</li>
+<li>Providing credentials in <code>/etc/nullmailer/remotes</code> is a security flaw because
+they can be caught by any user running <code>ps aux</code>.</li>
+</ol>
+<p>However, changing the sender is important. While installing nullmailer on a
+local system over the weekend, I again got struck by the fact that
+<a href="https://www.posteo.de">Posteo</a> would not allow relaying mail from a host that does not have a
+fully-qualified domain name -- obviously my local Raspberry Pi does not have
+one.</p>
+<p>The solution is to change the sender. Instead of sending mail with a sender like
+e.g., <code>root@rpi-local</code>, masquerade the sender with an envelope-from. In our case
+we can use the Posteo account.</p>
+<p>That said, it seems nullmailer cannot do so, see this <a href="https://askubuntu.com/a/759682/441510">StackExchange
+post</a>. In the same post they also talk about the above
+mentioned security flaw. But there is an easy to use alternative: DragonFly Mail
+Agent (dma).</p>
+<p>So, after removing Nullmailer from the system, install dma and configure it in
+<code>/etc/dma/dma.conf</code> like the following:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>SMARTHOST posteo.de
+</span><span>PORT 587
+</span><span>AUTHPATH /etc/dma/auth.conf
+</span><span>SECURETRANSFER
+</span><span>STARTTLS
+</span><span>MASQUERADE &lt;account&gt;@posteo.de
+</span></code></pre>
+<p>As you can see, credentials must go to <code>/etc/dma/auth.conf</code>, which will be <em>read</em>
+by dma. (On the contrary, Nullmailer seems to simply execute each line of
+<code>/etc/nullmailer/remotes</code>. Consequently users can catch these lines, including
+the credentials, by executing <code>ps</code>.)</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&lt;account&gt;@posteo.de|posteo.de:&lt;password-for-account&gt;
+</span></code></pre>
+<p>What's left though is forwarding all mail i.e., mail received by any local user
+on the system, including <code>root</code>, <code>postmaster</code>, and the like, to our account at
+Posteo (or any other provider you chose). Since dma reads <code>/etc/aliases</code> this
+can be achieved with the following line:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>*: &lt;account&gt;@posteo.de
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/unix/">#Unix</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/mail/">#Mail</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/dma/">#dma</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/nullmailer/">#nullmailer</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;syncthing-on-debian&#x2F;">‹ Setting up syncthing with systemd on Debian</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;wsl-dev-env&#x2F;">Setting up a Development Environment in Windows&#x27;s WSL ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

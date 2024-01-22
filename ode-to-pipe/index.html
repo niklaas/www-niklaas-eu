@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - An ode to the pipe operator</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;ode-to-pipe&#x2F;">An ode to the pipe operator</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2017-09-26</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>What I particularly like about the <a href="https://www.tidyverse.org">tidyverse</a> is
+the pipe operator <code>%&gt;%</code>. For me it is more than a convenient way of
+concatenating tasks, prettifying and/or reducing the amount of code.
+I intrinsically connect it to the first two principles of the UNIX
+philosophy:<sup class="footnote-reference"><a href="#unix-philosophy">1</a></sup></p>
+<span id="continue-reading"></span>
+<ol>
+<li>Write programs that do one thing and do it well.</li>
+<li>Write programs to work together.</li>
+</ol>
+<p>The philosophy tells us that, by focusing on smaller functions (or programs)
+addressing smaller problems, it is easier to find a solution to bigger
+problems; and, as an extra, we can simply reuse our &quot;small&quot; solutions in other
+circumstances to tackle other problems.<sup class="footnote-reference"><a href="#problems-problems">2</a></sup> A pipe operator
+eases running smaller functions one after the other by passing the output of
+the first function to the second to the third and so on. That is, the operator
+can serve as (the missing) link between your functions to quickly -- but
+comprehensibly -- solve a problem. Its mere existence makes following the UNIX
+philosophy attractive and serves as great motivation to pursue it.</p>
+<p>On UNIX shells, such as <code>sh</code> or <code>bash</code>, the pipe operator is <code>|</code> and one of the
+most fundamental tools for everyone who works on the command line. For example,
+to find all R files underneath your local R library that include R's pipe
+operator execute the following:<sup class="footnote-reference"><a href="#short-find">3</a></sup></p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">find ~</span><span>/R</span><span style="color:#bf616a;"> -name </span><span>&#39;</span><span style="color:#a3be8c;">*.R</span><span>&#39;</span><span style="color:#bf616a;"> -print0 </span><span>| </span><span style="color:#bf616a;">xargs -0</span><span> grep &#39;</span><span style="color:#a3be8c;">%&gt;%</span><span>&#39; | </span><span style="color:#bf616a;">head
+</span></code></pre>
+<p>In this case, the pipe operator helps us to combine the power of <code>find</code>,
+<code>xargs</code> and <code>grep</code>. In fact, these are independent programs but their
+developers have done there best to ensure that they work together. We can
+combine them in an arbitrary manner to solve problems nobody has thought of
+before, such as finding all R files underneath our local R library that include
+R's pipe operator <code>%&gt;%</code>.</p>
+<p>R's pipe operator is not part of <code>base::</code>. But by shipping it with the
+<code>magrittr</code> package,<sup class="footnote-reference"><a href="#magrittr">4</a></sup> it has become a fundamental part of the
+<a href="https://www.tidyverse.org">tidyverse</a>. The pipe reveals its power especially
+in conjunction with <a href="http://dplyr.tidyverse.org/">dplyr</a> (and
+<a href="http://tidyr.tidyverse.org/">tidyr</a>) -- but let's start small. What is it for
+exactly?</p>
+<p>Let's say you have two functions <code>f1</code> and <code>f2</code>, and some data <code>x</code>. If you were
+to apply the first and the second function to x <em>one after the other</em> you would
+probably do something like the following:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>y &lt;- </span><span style="color:#bf616a;">f2</span><span>(</span><span style="color:#bf616a;">f1</span><span>(x))
+</span></code></pre>
+<p>Or, something like this:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>x &lt;- </span><span style="color:#bf616a;">f1</span><span>(x)
+</span><span>y &lt;- </span><span style="color:#bf616a;">f2</span><span>(x)
+</span></code></pre>
+<p>Using the pipe operator <code>%&gt;%</code> you can simplify the code:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>y &lt;- x %&gt;% f1 %&gt;% f2
+</span></code></pre>
+<p>In this case, imagine <code>x</code> as a stream of data that flows through <code>f1</code> and <code>f2</code>
+following the direction <code>%&gt;%</code> points to. Each time it reaches a function, the
+function is applied to the data, and passed further on along the stream. Once
+it reaches the end of the line, the result is stored in <code>y</code>. This way,
+reasoning about the code is much easier.</p>
+<p>Take a more complex example with some example data from <code>iris</code>.  Let's say you
+want to inspect species <code>setosa</code> and calculate the mean of <code>Sepal.Length</code>.
+Traditionally, you would do something like the following:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">data</span><span>(iris)
+</span><span>idx &lt;- iris</span><span style="color:#b48ead;">$</span><span>Species == &quot;</span><span style="color:#a3be8c;">setosa</span><span>&quot;
+</span><span>setosa &lt;- iris[idx, ]
+</span><span style="color:#96b5b4;">mean</span><span>(setosa</span><span style="color:#b48ead;">$</span><span>Sepal.Length)
+</span></code></pre>
+<p>With the pipe operator you can simplify the task by combining dplyr's <code>filter</code>
+and <code>summarize</code> functions.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">library</span><span>(magrittr)
+</span><span style="color:#96b5b4;">library</span><span>(dplyr)
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>iris %&gt;%
+</span><span>  </span><span style="color:#96b5b4;">filter</span><span>(Species == &quot;</span><span style="color:#a3be8c;">setosa</span><span>&quot;) %&gt;%
+</span><span>  </span><span style="color:#bf616a;">summarize</span><span>(mean</span><span style="color:#b48ead;">:  </span><span style="color:#96b5b4;">mean</span><span>(Sepal.Length)) %&gt;%
+</span><span>  </span><span style="color:#96b5b4;">unlist</span><span>(use.names</span><span style="color:#b48ead;">: </span><span style="color:#d08770;">FALSE</span><span>)
+</span></code></pre>
+<p>Once again, we can imagine a data stream that flows through <code>filter</code> and
+<code>summarize</code>. Each time it reaches a function, the function is applied to the
+stream. At the end the final output is printed. (In this example, you could
+omit the call to <code>unlist</code> at the end. It only serves the purpose to make the
+output look like the one of the first example.)</p>
+<p>Arguably, it is much easier to reason about the second example using <code>%&gt;%</code>.
+First, you can clearly see what data you are operating on because it's the very
+first word in the sequence of expressions. In the example above, this is more
+difficult to reason about because <code>iris</code> is spread throughout the code. Second,
+you can clearly identify that three functions are applied to the data. In the
+example showing the traditional approach, you do grasp that, in the end, a mean
+is calculated, but you must read the code backwards. You must find out what is
+stored in <code>setosa</code> and what <code>idx</code> is for.</p>
+<p>Obviously, the pipe operator is only useful if functions exist that are
+compatible to piping. Compatibility is guaranteed by writing functions with the
+first argument being for data input, such as</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">pipe_function </span><span>&lt;- </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">.data</span><span>, </span><span style="color:#bf616a;">...</span><span>) {
+</span><span>    </span><span style="color:#65737e;"># do something here
+</span><span>
+</span><span>    .data_manipulated
+</span><span>}
+</span></code></pre>
+<p>So, why not always use piping? It makes debugging difficult. If an error occurs
+somewhere along the pipe, <code>traceback()</code> won't help you a lot because its output
+will be cluttered with <code>%&gt;%</code>'s internals. Thus, it makes sense to split the
+pipe in reasonable sizes. This way you will be able to investigate each part of
+the pipe on its own and trace errors more easily.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>setosa &lt;- iris %&gt;%
+</span><span>  </span><span style="color:#96b5b4;">filter</span><span>(Species == &quot;</span><span style="color:#a3be8c;">setosa</span><span>&quot;)
+</span><span>
+</span><span>setosa %&gt;%
+</span><span>  </span><span style="color:#96b5b4;">filter</span><span>(Sepal.Width &gt; </span><span style="color:#d08770;">3</span><span>) %&gt;%
+</span><span>  </span><span style="color:#bf616a;">summarize</span><span>(mean</span><span style="color:#b48ead;">:  </span><span style="color:#96b5b4;">mean</span><span>(Sepal.Length)) %&gt;%
+</span><span>  </span><span style="color:#96b5b4;">unlist</span><span>(use.names</span><span style="color:#b48ead;">: </span><span style="color:#d08770;">FALSE</span><span>)
+</span></code></pre>
+<p>To summarize, R's pipe operator enables us to follow a philosophy that has
+proven itself to be very useful. While it encourages programmers to build
+functions that obey a simple principle, it opens the doors for code that is
+easier comprehensible. By doing so, it is the &quot;glue&quot; that holds together an
+infrastructure that makes data analyses straightforward and fun: the tidyverse.
+Thus, to me, it's an element of R that I never want to miss.</p>
+<div class="footnote-definition" id="magrittr"><sup class="footnote-definition-label">4</sup>
+<p><code>magrittr</code> also provides other interesting pipe operators such as
+<code>%&lt;&gt;%</code> and <code>%$%</code>. Take a look at <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">the
+vignette</a>
+to learn more about it.</p>
+</div>
+<div class="footnote-definition" id="problems-problems"><sup class="footnote-definition-label">2</sup>
+<p>It's not that software development is all about problems.
+Don't get me wrong here. Actually it's a lot about creative work -- and fun!</p>
+</div>
+<div class="footnote-definition" id="short-find"><sup class="footnote-definition-label">3</sup>
+<p>Be aware that I restrict the output to the first 10 files here
+by using <code>find</code>.</p>
+</div>
+<div class="footnote-definition" id="unix-philosophy"><sup class="footnote-definition-label">1</sup>
+<p>The
+<a href="https://en.wikipedia.org/wiki/Unix_philosophy">Wikipedia</a> article provides
+further information about the philosophy and its origin. There you can read
+more about the third principle too: 3. Write programs to handle text streams,
+because that is a universal interface.</p>
+</div>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/r/">#R</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/tidyverse/">#tidyverse</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/magrittr/">#magrittr</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;gnupg-ssb-generation&#x2F;">‹ Generating a new subkey with GnuPG</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;mounting-vboxsf&#x2F;">Mounting VirtualBox&#x27;s shared folders ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

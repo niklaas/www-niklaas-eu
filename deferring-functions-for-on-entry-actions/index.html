@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Deferring functions for &quot;on entry&quot; actions</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;deferring-functions-for-on-entry-actions&#x2F;">Deferring functions for &quot;on entry&quot; actions</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-02-25</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>I decided to learn <a href="https://golang.org">Go</a> because it seems an interesting and
+easy to learn low-level programming language. There are several free online
+resources to learn the language, such as <a href="https://tour.golang.org">The Go Tour</a>,
+but I decided to Go for the book <a href="http://www.gopl.io">&quot;The Go Programming
+Language&quot;</a> (GOPL) by Alan Donovan and Brian Kernighan. In
+the book, there are some code examples that I find particularly elegant. Here, I
+want to record some of these examples for future reference -- while having the
+chance to add some additional comments on the code for myself.<sup class="footnote-reference"><a href="#gopl-github">1</a></sup></p>
+<span id="continue-reading"></span>
+<p>In Go there exists the <code>defer</code> statement to execute a function when the parent
+function exits. For example, this is useful when you want to defer the closing
+of a file that you opened:</p>
+<pre data-lang="Go" style="background-color:#2b303b;color:#c0c5ce;" class="language-Go "><code class="language-Go" data-lang="Go"><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#bf616a;">file</span><span>, </span><span style="color:#bf616a;">err </span><span>:= </span><span style="color:#bf616a;">os</span><span>.</span><span style="color:#bf616a;">Open</span><span>(&quot;</span><span style="color:#a3be8c;">file.go</span><span>&quot;)
+</span><span>    </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">err </span><span>!= </span><span style="color:#d08770;">nil </span><span>{
+</span><span>        </span><span style="color:#bf616a;">log</span><span>.</span><span style="color:#bf616a;">Fatal</span><span>(</span><span style="color:#bf616a;">err</span><span>)
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">defer </span><span style="color:#bf616a;">file</span><span>.</span><span style="color:#bf616a;">Close</span><span>()
+</span><span>}
+</span></code></pre>
+<p>But defer can also be used to execute a code on both exit <em>and entry</em>,
+e.g.:<sup class="footnote-reference"><a href="#gopl-example">2</a></sup></p>
+<pre data-lang="Go" style="background-color:#2b303b;color:#c0c5ce;" class="language-Go "><code class="language-Go" data-lang="Go"><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">bigSlowOperation</span><span>() {
+</span><span>	</span><span style="color:#b48ead;">defer </span><span style="color:#bf616a;">trace</span><span>(&quot;</span><span style="color:#a3be8c;">bigSlowOperation</span><span>&quot;)() </span><span style="color:#65737e;">// don&#39;t forget the extra parentheses
+</span><span>	</span><span style="color:#65737e;">// ...lots of work...
+</span><span>	</span><span style="color:#bf616a;">time</span><span>.</span><span style="color:#bf616a;">Sleep</span><span>(</span><span style="color:#d08770;">10 </span><span>* </span><span style="color:#bf616a;">time</span><span>.</span><span style="color:#bf616a;">Second</span><span>) </span><span style="color:#65737e;">// simulate slow operation by sleeping
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">func </span><span style="color:#8fa1b3;">trace</span><span>(</span><span style="color:#bf616a;">msg </span><span style="color:#b48ead;">string</span><span>) </span><span style="color:#b48ead;">func</span><span>() {
+</span><span>	</span><span style="color:#bf616a;">start </span><span>:= </span><span style="color:#bf616a;">time</span><span>.</span><span style="color:#bf616a;">Now</span><span>()
+</span><span>	</span><span style="color:#bf616a;">log</span><span>.</span><span style="color:#bf616a;">Printf</span><span>(&quot;</span><span style="color:#a3be8c;">enter </span><span style="color:#d08770;">%s</span><span>&quot;, </span><span style="color:#bf616a;">msg</span><span>)
+</span><span>	</span><span style="color:#b48ead;">return func</span><span>() { </span><span style="color:#bf616a;">log</span><span>.</span><span style="color:#bf616a;">Printf</span><span>(&quot;</span><span style="color:#a3be8c;">exit </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> (</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">)</span><span>&quot;, </span><span style="color:#bf616a;">msg</span><span>, </span><span style="color:#bf616a;">time</span><span>.</span><span style="color:#bf616a;">Since</span><span>(</span><span style="color:#bf616a;">start</span><span>)) }
+</span><span>}
+</span></code></pre>
+<p>The secret lies in two aspects of the code above: First, <code>trace</code> returns an
+anonymous function. Second, the anonymous function is run by the extra
+parenthesis in <code>bigSlowOperation</code>. When the function is executed, <code>trace</code>
+executes because of the extra parenthesis, which initialises variable <code>start</code>
+and prints <code>msg</code>. The anonymous function is returned and handed over to <code>defer</code>
+which will execute it as soon as <code>bigSlowOperation</code> is exited. Eventually this
+prints the exit message.</p>
+<div class="footnote-definition" id="gopl-github"><sup class="footnote-definition-label">1</sup>
+<p>The original source code of the examples can be found in <a href="https://github.com/adonovan/gopl.io/">the book's GitHub repository</a>. The code is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>.
+<sup class="footnote-reference"><a href="#gopl-example">2</a></sup>: The example is taken from <a href="https://www.niklaas.eu/deferring-functions-for-on-entry-actions/gopl.io/ch5/trace/main.go">gopl.io/ch5/trace</a>.</p>
+</div>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/golang/">#golang</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/programming/">#programming</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/functions/">#functions</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;ssh-hardening&#x2F;">‹ SSH hardening</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;vim-at-end&#x2F;">Adding characters at the end of multiple lines in Vim ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

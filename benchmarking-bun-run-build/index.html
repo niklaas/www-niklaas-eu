@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Benchmarking `bun run` and `bun build` with `hyperfine`</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;benchmarking-bun-run-build&#x2F;">Benchmarking `bun run` and `bun build` with `hyperfine`</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2024-01-17</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>When writing small tools that support me with my daily work, I usually opted to shell-scripting with <code>sh</code>, <code>bash</code> or 
+even <code>zsh</code> because I find the concept of piping text from one command to another pretty appealing. It's a 
+straightforward and powerful concept that doesn't require a lot of set up: most CLI tools operate on a per-line 
+basis, so it's a bliss to combine them.</p>
+<p>The situation becomes more challenging when I need to work on JSONs, which are more natural in the JavaScript world, 
+where I often work in. Usually, I opted for <code>jq</code> to parse JSON into line-based data, but I keep forgetting its 
+syntax, which also can turn out complex and difficult to read.</p>
+<span id="continue-reading"></span>
+<p>So far, the intricacies of getting JavaScript code that is meant for the browser to run using node.js on the command 
+line, kept me from actually considering this option. Usually, I would run into issues because the code I want to 
+reuse for a quick command-line session used browser APIs that don't work in node.js.</p>
+<p>When I learned about <a href="https://bun.sh">bun.js</a>, claiming that it makes running JavaScript code <em>just work</em> on the 
+command-line, I got very interested. And it turns out it holds its promises---at least for the specific use case that I
+had some days ago. I had implemented a function that provides a suggestion for a misspelled email domain and wanted to
+run it with <a href="https://www.gnu.org/software/parallel/">GNU parallel</a> on a bunch of misspelled domains. (Using GNU parallel
+saved me from dealing with JavaScript's single-threaded-ness and <code>async/await</code>s.)</p>
+<p>I ended up writing a short JavaScript file that takes in a single parameter and calls my function with the parameter 
+as an argument. Then, I was able to run <code>bun run my-script.js</code> and it took care of different styles of imports, 
+<code>node_modules</code> and whatever would have caused my headaches using <code>nodejs</code> for executing the file. 🎉</p>
+<p>Since <code>bun run</code> would reparse the file on every call, I decided to use <code>bun build</code> to compile the script to a binary.
+I continued running the binary in parallel, this time avoiding the unnecessary reparsing. Creating a binary from a 
+JavaScript turned out to be straightforward as well using <code>bun build</code>:</p>
+<pre data-lang="shell" style="background-color:#2b303b;color:#c0c5ce;" class="language-shell "><code class="language-shell" data-lang="shell"><span>bun build my-script.js --compile --outfile my-script
+</span></code></pre>
+<p>Before running the binary in parallel, I wanted to know whether, as I had anticipated, the compiled version would 
+run faster than calling <code>bun run</code> again and again. As it turned out, that day I would make yet another discovery 
+that would make this quest pretty easy to solve: <code>hyperfine</code> for command line benchmarking:</p>
+<pre data-lang="shell" style="background-color:#2b303b;color:#c0c5ce;" class="language-shell "><code class="language-shell" data-lang="shell"><span>hyperfine --warmup 5 &#39;bun run my-script-cli.js&#39; &#39;./my-script-cli&#39;
+</span></code></pre>
+<pre data-lang="text" style="background-color:#2b303b;color:#c0c5ce;" class="language-text "><code class="language-text" data-lang="text"><span>Benchmark 1: bun run my-script-cli.js
+</span><span>  Time (mean ± σ):      32.6 ms ±   0.6 ms    [User: 47.7 ms, System: 20.3 ms]
+</span><span>  Range (min … max):    31.1 ms …  33.8 ms    84 runs
+</span><span>
+</span><span>Benchmark 2: ./my-script-cli
+</span><span>  Time (mean ± σ):      15.2 ms ±   0.6 ms    [User: 15.5 ms, System: 4.4 ms]
+</span><span>  Range (min … max):    14.2 ms …  18.6 ms    168 runs
+</span><span>
+</span><span>Summary
+</span><span>  ./my-script-cli ran
+</span><span>    2.14 ± 0.10 times faster than bun run suggest-domain-cli.js
+</span></code></pre>
+<p>In the end, with the new tooling that I had found, it was straightforward for me to convert existing business logic 
+that was ingrained in a frontend project to a command line utility. In addition to that, some more keystrokes later, 
+I had performed a basic benchmark of that utility too!</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/bun/">#bun</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/hyperfine/">#hyperfine</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/javascript/">#javascript</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;jest-environment-jsdom&#x2F;">Using the jsdom test environment ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - crontab</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/crontab/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-05-10T21:49:31+02:00</updated>
+    <id>https://www.niklaas.eu/tags/crontab/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Unattended Upgrades</title>
+        <published>2018-05-10T21:49:31+02:00</published>
+        <updated>2018-05-10T21:49:31+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/unattended-upgrades/"/>
+        <id>https://www.niklaas.eu/unattended-upgrades/</id>
+        
+        <summary type="html">&lt;p&gt;In some cases it makes sense to install upgrades of packages automatically. This
+can reduce time for maintenance a lot. To do so, install the little helpers
+&lt;code&gt;unattended-upgrades&lt;&#x2F;code&gt; and &lt;code&gt;apt-listchanges&lt;&#x2F;code&gt; with the following command:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

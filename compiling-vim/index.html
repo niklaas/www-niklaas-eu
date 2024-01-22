@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Compiling Vim with modern features</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;compiling-vim&#x2F;">Compiling Vim with modern features</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-02-17</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>I prefer the most updated version of <code>vim</code> these days. First, you must make
+sure that you have installed the required dependencies for building.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> apt install \
+</span><span>    libx11-dev \
+</span><span>    libxt-dev
+</span></code></pre>
+<span id="continue-reading"></span>
+<p>If you want support for <code>lua</code> you need to link to some library files in
+<code>/usr/include</code>.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># Fix lua paths
+</span><span style="color:#bf616a;">$</span><span> ln</span><span style="color:#bf616a;"> -s</span><span> /usr/include/lua5.3 /usr/include/lua
+</span><span style="color:#bf616a;">$</span><span> ln</span><span style="color:#bf616a;"> -s</span><span> /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/local/lib/liblua.so
+</span></code></pre>
+<p>Finally, configure the build process. Enabling the following features is just
+an example. Personally, I use <code>vim</code> on the command line only, nonetheless, it
+makes sense to configure <code>--with-x</code> to have access to the system clipboards in
+<code>vim</code>'s registers <code>&quot;*</code> and <code>&quot;+</code>. Further, <code>--enable-fail-if-missing</code> is
+recommended if you want to notice missing dependencies that are required for
+the provided configuration.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> ./configure \
+</span><span style="color:#bf616a;">    --enable-pythoninterp </span><span>\
+</span><span style="color:#bf616a;">    --enable-python3interp </span><span>\
+</span><span style="color:#bf616a;">    --enable-luainterp </span><span>\
+</span><span style="color:#bf616a;">    --with-features</span><span>=huge \
+</span><span style="color:#bf616a;">    --with-x </span><span>\
+</span><span style="color:#bf616a;">    --enable-fail-if-missing
+</span></code></pre>
+<p>Depending on your system, the dependencies listed at the top of this post are
+not sufficient. Most probably you must install other libraries and restart the
+configuration. If that is the case (or if you change the arguments of
+<code>./configure</code>) remember to run the following command. This will clean the
+cached results of the configuration run previously.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> make distclean
+</span></code></pre>
+<p>When configuring the built process was successful, you can start the built
+process and install the compiled files.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> make
+</span><span style="color:#bf616a;">$</span><span> make install
+</span></code></pre>
+<p>You can double-check whether the version you compiled includes all features
+with <code>vim --version</code>. This will return the version and a list of compiled
+features.</p>
+<p>If you want to compile from source again, first, run the following command to
+clean the build directory.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> make clean
+</span></code></pre>
+<p>To remove the compiled files from <code>/usr</code> and others run <code>make uninstall</code>.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/vim/">#vim</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/lua/">#Lua</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/python/">#Python</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;hello-world-rs-gae&#x2F;">‹ Performant and lightweight Rust API Server powered by Google App Engine</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;xfce-disable-ssh-agent&#x2F;">Disable ssh-agent in Xfce ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - pinentry</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/pinentry/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2019-03-10T16:59:49+01:00</updated>
+    <id>https://www.niklaas.eu/tags/pinentry/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Using a proper pinentry remotely when running X</title>
+        <published>2019-03-10T16:59:49+01:00</published>
+        <updated>2019-03-10T16:59:49+01:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/pinentry-x-remote/"/>
+        <id>https://www.niklaas.eu/pinentry-x-remote/</id>
+        
+        <summary type="html">&lt;p&gt;The application &lt;code&gt;pinentry&lt;&#x2F;code&gt; opens when you need to provide your password for
+decrypting your GnuPG key. You can install different interfaces for providing
+the password via &lt;code&gt;pinentry&lt;&#x2F;code&gt;. There are graphical and non-graphical variants
+e.g.,&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ dpkg -l | grep pinentry
+&lt;&#x2F;span&gt;&lt;span&gt;pinentry-curses
+&lt;&#x2F;span&gt;&lt;span&gt;pinentry-gnome3
+&lt;&#x2F;span&gt;&lt;span&gt;pinentry-gtk2
+&lt;&#x2F;span&gt;&lt;span&gt;pinentry-tty
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</summary>
+        
+    </entry>
+</feed>

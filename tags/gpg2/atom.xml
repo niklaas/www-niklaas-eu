@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - gpg2</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/gpg2/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-10-04T19:04:22+02:00</updated>
+    <id>https://www.niklaas.eu/tags/gpg2/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Generating a new subkey with GnuPG</title>
+        <published>2017-10-04T19:04:22+02:00</published>
+        <updated>2017-10-04T19:04:22+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/gnupg-ssb-generation/"/>
+        <id>https://www.niklaas.eu/gnupg-ssb-generation/</id>
+        
+        <content type="html" xml:base="https://www.niklaas.eu/gnupg-ssb-generation/">&lt;p&gt;You should store your master key at a save place i.e., not on your notebook.
+When generating a new key subkey, don&#x27;t copy your master key to your local file
+system. Rather tell GnuPG where your master key is and edit it there. &lt;em&gt;Make
+sure that you use GnuPG version 2.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; export GNUPGHOME=&amp;lt;where your master key is&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; gpg&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --edit-key &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;your email address&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In the menu run &lt;code&gt;expire&lt;&#x2F;code&gt; to change the expiration date of your master key if
+necessary. Add two additional keys, one for encryption and one for signing,
+with &lt;code&gt;addkey&lt;&#x2F;code&gt; and the following menus. Quit and save the new subkeys with
+&lt;code&gt;save&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Export the keys with the following command:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; gpg&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --armor --export-secret-subkeys &lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; secret-subkeys.asc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Copy the file &lt;code&gt;secret-subkeys.asc&lt;&#x2F;code&gt; to your notebook (or any other device where
+you need your keys) and import them with &lt;code&gt;gpg --import secret-subkeys.asc&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

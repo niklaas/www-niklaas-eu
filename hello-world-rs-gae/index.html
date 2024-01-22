@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Performant and lightweight Rust API Server powered by Google App Engine</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;hello-world-rs-gae&#x2F;">Performant and lightweight Rust API Server powered by Google App Engine</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-03-09</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>The article provides some background to the example project
+<a href="https://github.com/niklaas/hello-world-rs-gae">hello-world-rs-gae</a>. The project demonstrates how to
+deploy a simple &quot;Hello World!&quot; server on <a href="https://cloud.google.com/appengine/">Google App Engine</a> served by a
+static Rust binary.</p>
+<span id="continue-reading"></span>
+<p>Nowadays there is no longer need to supervise servers for providing a
+performant web application. Since containerization, Docker, Kubernetes and the
+like have become mainstream, more and more cloud providers offer managed
+solutions for hosting any type of container. Examples include <a href="https://aws.amazon.com/elasticbeanstalk/">AWS Elastic
+Beanstalk</a>, <a href="https://nanobox.io">nanobox.io</a> and <a href="https://www.digitalocean.com/products/kubernetes/">Digital Ocean's new
+managed Kubernetes service</a>.</p>
+<p>Another service I came across recently is <a href="https://cloud.google.com/appengine/">Google App Engine</a>. At first
+glance it seemed to target specific languages only, such as JavaScript, Python,
+Ruby, Go, etc. but, in fact, it supports <em>any language</em> you can think of -- as
+long as you can provide your application in a Docker container that serves a
+so-called &quot;<a href="https://cloud.google.com/appengine/docs/flexible/custom-runtimes/about-custom-runtimes">custom runtime</a>&quot;.</p>
+<p>So I thought this would be a great opportunity to run an <a href="https://actix.rs">actix</a> server
+in a <a href="https://www.rust-lang.org">Rust</a> runtime. It turned out not to be too simple because compiling
+a server based on actix takes some time. Regularly, compiling <a href="https://github.com/niklaas/hello-world-rs-gae">a simple hello
+world project</a> in the Google Cloud ran into a timeout and
+the deployment of the application failed. This was when I got the idea to
+compile the project somewhere else (locally) and reduce the actual deployment
+in the cloud to a lightweight Docker container. In the container, the compiled
+binary serves as entry point for the application.</p>
+<p>For the deployment to the cloud being fast and using the least resources
+possible, I decided to use <a href="https://github.com/emk/rust-musl-builder">rust-musl-builder</a> and host the
+resulting binary in a <a href="https://github.com/niklaas/hello-world-rs-gae/blob/master/Dockerfile"><code>scratch</code> container</a>. While I was quite
+skeptic about this idea in the first place, I turned out to work. And it is
+pretty useful because it offers a very simple way of hosting an automatically
+scaling REST endpoint that is light on resources.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/google-app-engine/">#google-app-engine</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/gae/">#gae</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/rust/">#rust</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/web/">#web</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;pinentry-x-remote&#x2F;">‹ Using a proper pinentry remotely when running X</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;compiling-vim&#x2F;">Compiling Vim with modern features ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

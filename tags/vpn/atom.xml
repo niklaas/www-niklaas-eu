@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - VPN</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/vpn/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-05-10T16:44:32+02:00</updated>
+    <id>https://www.niklaas.eu/tags/vpn/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Using tinc for a simple meshed VPN network</title>
+        <published>2018-05-10T16:44:32+02:00</published>
+        <updated>2018-05-10T16:44:32+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/tinc-for-simple-vpn/"/>
+        <id>https://www.niklaas.eu/tinc-for-simple-vpn/</id>
+        
+        <summary type="html">&lt;p&gt;Accessing your computers from remote at home isn&#x27;t easy since you lack a public
+IP address in most cases. A workaround is to use a server with a public IP
+address as an entrance to a meshed &lt;a href=&quot;https:&#x2F;&#x2F;www.tinc-vpn.org&quot;&gt;tinc&lt;&#x2F;a&gt; virtual private network (VPN).&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

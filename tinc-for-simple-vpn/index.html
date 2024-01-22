@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Using tinc for a simple meshed VPN network</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tinc-for-simple-vpn&#x2F;">Using tinc for a simple meshed VPN network</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-05-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Accessing your computers from remote at home isn't easy since you lack a public
+IP address in most cases. A workaround is to use a server with a public IP
+address as an entrance to a meshed <a href="https://www.tinc-vpn.org">tinc</a> virtual private network (VPN).</p>
+<span id="continue-reading"></span>
+<p>In this post I describe the basic procedure to configure two Debian machines
+(one with a public IP address and one with a private IP address) to communicate
+over a tinc network. In principle, you can follow the <a href="https://tinc-vpn.org/documentation/index.html">the official configuration
+guide</a>, however there are some aspects you must take care of
+specifically.</p>
+<p>While the main configuration <code>/etc/tinc/&lt;vpnname&gt;/tinc.conf</code> can remain as it
+is, I had to put more energy into setting up the tunnel device. Check out the
+following files:</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/tinc/&lt;vpnname&gt;/tinc.conf
+</span><span style="color:#bf616a;">Name</span><span>: example_name
+</span><span style="color:#bf616a;">ConnectTo</span><span>: public_server
+</span><span style="color:#bf616a;">Device</span><span>: /dev/net/tun  </span><span style="color:#65737e;"># for Debian
+</span></code></pre>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># /etc/tinc/&lt;vpnname&gt;/tinc-up
+</span><span style="color:#65737e;">#!/bin/sh
+</span><span style="color:#bf616a;">ip</span><span> link set $</span><span style="color:#bf616a;">INTERFACE</span><span> up
+</span><span>
+</span><span style="color:#bf616a;">ip</span><span> addr add 10.&lt;IP&gt;.0.1/8 dev $</span><span style="color:#bf616a;">INTERFACE
+</span><span style="color:#bf616a;">ip</span><span> addr add fd83:10d3:98f3:&lt;IP&gt;::1/48 dev $</span><span style="color:#bf616a;">INTERFACE
+</span></code></pre>
+<p>Remember to make the previous script executable with <code>chmod +x tinc-up</code>.
+Further, specify the IP addresses as your network set-up requires. Ultratools
+provides a <a href="https://www.ultratools.com/tools/rangeGenerator">convenient tool</a>
+for generating local IPv6 randomly. Remember that you are allowed to use <code>/48</code>
+networks while Ultratools generates <code>/64</code> address ranges by default. Simply omit
+the fourth block of the generated address.</p>
+<ol>
+<li>You must turn on the tunnel device explicitly.</li>
+<li>The subnets that each host provides must be smaller than the subnet you route
+to on the tunnel. Otherwise you would need to add routes to the foreign
+subnets manually. See below:</li>
+</ol>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/tinc/&lt;vpnname&gt;/example_name
+</span><span style="color:#bf616a;">Subnet</span><span>: </span><span style="color:#d08770;">10</span><span>.&lt;IP&gt;.</span><span style="color:#d08770;">0</span><span>.</span><span style="color:#d08770;">0</span><span>/</span><span style="color:#d08770;">16
+</span><span style="color:#bf616a;">Subnet</span><span>: fd83:10d3:98f3:&lt;IP&gt;::/</span><span style="color:#d08770;">64
+</span></code></pre>
+<p>In the next step, generate a key pair with <code>tincd -n &lt;vpnname&gt; -K 4096</code> and
+interchange all public keys between the hosts.</p>
+<p>After starting tinc on all hosts, try to <code>ping</code> each host in the network. For
+debugging, you can use the following command to launch <code>tincd</code> directly:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> tincd</span><span style="color:#bf616a;"> -n </span><span>&lt;vpnname&gt; -D
+</span></code></pre>
+<p>You can use <code>CTRL-C</code> to toggle verbosity. In case you want to start <code>tincd</code> with
+higher verbosity from the beginning, use the following command flag: <code>-d5</code>. The
+logging information helps a lot when debugging the network setup.</p>
+<p>Finally, to launch <code>tincd</code> when booting, enable it in <code>systemd</code> with the
+following command. Note that you need to provide the name of the tinc network,
+replacing <code>&lt;vpnname&gt;</code> in the following command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> systemctl enable tinc
+</span><span style="color:#bf616a;">$</span><span> systemctl enable tinc@&lt;vpnname&gt;
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/tinc/">#tinc</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/ip-addr/">#ip-addr</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/ip-route/">#ip-route</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/vpn/">#VPN</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;unattended-upgrades&#x2F;">‹ Unattended Upgrades</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;syncthing-on-debian&#x2F;">Setting up syncthing with systemd on Debian ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

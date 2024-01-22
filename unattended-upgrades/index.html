@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Unattended Upgrades</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;unattended-upgrades&#x2F;">Unattended Upgrades</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-05-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>In some cases it makes sense to install upgrades of packages automatically. This
+can reduce time for maintenance a lot. To do so, install the little helpers
+<code>unattended-upgrades</code> and <code>apt-listchanges</code> with the following command:</p>
+<span id="continue-reading"></span><pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> apt install unattended-upgrades apt-listchanges
+</span></code></pre>
+<p>Now make sure to set the following entries in the configuration file. This way
+the result of the upgrade process is sent to <code>root</code>'s inbox. We further
+configure to reboot automatically at 02:00 if upgrades require a restart.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/apt/apt.conf.d/50unattended-upgrades
+</span><span style="color:#bf616a;">Unattended-Upgrade</span><span>::Mail </span><span style="color:#a3be8c;">&quot;root&quot;</span><span>;
+</span><span style="color:#bf616a;">Unattended-Upgrade</span><span>::Automatic-Reboot </span><span style="color:#a3be8c;">&quot;true&quot;</span><span>;
+</span><span style="color:#bf616a;">Unattended-Upgrade</span><span>::Automatic-Reboot-Time </span><span style="color:#a3be8c;">&quot;02:00&quot;</span><span>;
+</span></code></pre>
+<p>We should also configure crontab to send a notification once the system rebooted
+successfully. This way we can make sure that both upgrading and rebooting were
+successful.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span># crontab -e
+</span><span>@reboot echo &quot;Subject: Rebooted at $(date -Iseconds)&quot; | /usr/sbin/sendmail root
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/upgrades/">#upgrades</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/security/">#security</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/crontab/">#crontab</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;testing-ansible-with-vagrant&#x2F;">‹ Testing Ansible with Vagrant</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tinc-for-simple-vpn&#x2F;">Using tinc for a simple meshed VPN network ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

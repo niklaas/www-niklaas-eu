@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - samba</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/samba/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-08-06T09:10:47+02:00</updated>
+    <id>https://www.niklaas.eu/tags/samba/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Samba&#x27;s file and directory masks</title>
+        <published>2017-08-06T09:10:47+02:00</published>
+        <updated>2017-08-06T09:10:47+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/samba-masks/"/>
+        <id>https://www.niklaas.eu/samba-masks/</id>
+        
+        <summary type="html">&lt;p&gt;When setting up &lt;a href=&quot;https:&#x2F;&#x2F;www.samba.org&#x2F;&quot;&gt;Samba&lt;&#x2F;a&gt; shares, I always wonder how to
+set file and directory masks correctly. The following is a best practice
+example that works quite well in &lt;code&gt;smb.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

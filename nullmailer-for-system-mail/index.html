@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Nullmailer for System Mail</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;nullmailer-for-system-mail&#x2F;">Nullmailer for System Mail</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-04-02</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p><strong>Update:</strong> See this <a href="https://www.niklaas.eu/nullmailer-for-system-mail/posts/2018-04-08-from-nullmailer-to-dma.md">updated
+post</a> on why you should <em>not</em>
+use nullmailer but dma for relaying system mail.</p>
+<span id="continue-reading"></span>
+<p>One thing we often forget -- although it's one of the most important parts of
+administering a Unix machine -- is system mail. However, if you don't set it up
+correctly, you won't receive important information about the health of the
+systems you administer.</p>
+<p>On systems that are only used by a single user, you don't need a full-fledged
+mail transfer agent (MTA)<sup class="footnote-reference"><a href="#MTA">1</a></sup> to receive system mail. You want every mail to
+be delivered to a single user i.e., the email address you regularly check. This
+is when <a href="http://untroubled.org/nullmailer/">nullmailer</a> shines.</p>
+<p>Once you replace the default MTA of your system with nullmailer, you can set it
+up to forward every mail to a single email address. This is quite handy because
+then you can make sure that you will receive important information about your
+servers e.g., unattended upgrades, failed cron jobs and the like.</p>
+<p>In the following I describe how to configure nullmailer on Debian. After having
+it installed with <code>sudo apt install nullmailer</code>, we need to check three
+configuration files:</p>
+<ul>
+<li><code>/etc/nullmailer/adminaddr</code>: the address all system mail should be relayed to</li>
+<li><code>/etc/nullmailer/defaultdomain</code>: appended to all hostnames that aren't fully
+qualified</li>
+<li><code>/etc/nullmailer/remotes</code>: contains the mail relays where all system should be
+relayed through</li>
+</ul>
+<p>It makes sense to relay mail through a server / an account that you can trust.
+Of course, you can relay mail through your own systems. However, what will you
+do, if these systems strike too? It makes sense to use a third party service
+that provides the required security (sensitive information might be relayed!).</p>
+<p>How will we use such a service? On the one hand we will use an extern email
+account to send system mail. On the other hand we will use the very same account
+to receive the mail we sent. This sounds a bit weird in the first place but
+makes totally sense once you realise that this makes for a very easy setup.</p>
+<p>It's not easy to find a secure email provider that you can trust. I decided to
+use <a href="https://www.posteo.de">Posteo</a> because it provides a lot of <a href="https://posteo.de/en/site/features#featuresprivacy">security
+features</a> that other
+providers lack. It only costs 1 Euro per month which makes it very cheap too.
+(Disclaimer: I am <em>not</em> affiliated to Posteo.)</p>
+<p>Once you registered an external account, nullmailer requires the login settings
+of the account. In the following example I use STARTTLS for a secure connection
+and configure nullmailer to use the appropriate port and username/password
+combination. <code>mail.example.com</code> is the SMTP server while <code>smtp</code> specifies the
+chosen protocol.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/nullmailer/remotes
+</span><span style="color:#bf616a;">mail</span><span>.example.com smtp --port=</span><span style="color:#d08770;">587 </span><span>--starttls --user=username --pass=secret
+</span></code></pre>
+<p>Since you probably administer multiple systems, it makes sense to filter the
+mail you receive on the external account into subfolders. This can be achieved
+quite easily by so-called recipient delimiters, the plus sign <code>+</code> being a quite
+prominent one.<sup class="footnote-reference"><a href="#recipient-delimiter">2</a></sup> The following is a general example.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/nullmailer/adminaddr
+</span><span style="color:#bf616a;">account</span><span>+hostname</span><span style="color:#b48ead;">@service</span><span>.tld
+</span></code></pre>
+<p>Recipient delimiters also work for Google Mail addresses such as
+<code>john+important@gmail.com</code>. Although an additional tag <code>important</code> was provided,
+<code>john@gmail.com</code> would receive the message. However, John could easily filter
+the message because of the provided tag.</p>
+<p>I recommend to transfer this idea to our example, use the hostname of the system
+as a unique tag, and filter the received mail on the external account accordingly.</p>
+<p>For system mail that doesn't provide a fully qualified domain e.g., mail sent to
+<code>root@localhost</code> you should provide the default domain in file <code>defaultdomain</code>.</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># /etc/nullmailer/defaultdomain
+</span><span style="color:#bf616a;">myhostname</span><span>.tld
+</span></code></pre>
+<p>You can test if everything works by using the <code>sendmail</code> command provided by nullmailer:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> echo &quot;</span><span style="color:#a3be8c;">test</span><span>&quot; | </span><span style="color:#bf616a;">/usr/sbin/sendmail</span><span> root
+</span></code></pre>
+<p>Check your external email account. You should have received a message containing
+the text &quot;test&quot;.</p>
+<div class="footnote-definition" id="MTA"><sup class="footnote-definition-label">1</sup>
+<p>I highly recommend reading the Wikipedia post on mail infrastructure to get a better understanding on how it works.</p>
+</div>
+<div class="footnote-definition" id="recipient-delimiter"><sup class="footnote-definition-label">2</sup>
+<p>To get a better understanding of what a recipient delimiter is, take a look a the <a href="http://www.postfix.org/postconf.5.html#recipient_delimiter">Postfix configuration page</a>. This isn't a feature unique to Postfix but implemented by a variety of MTAs and email service providers.</p>
+</div>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/unix/">#Unix</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/debian/">#Debian</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/mail/">#Mail</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/nullmailer/">#nullmailer</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;wsl-dev-env&#x2F;">‹ Setting up a Development Environment in Windows&#x27;s WSL</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;wsl-mount&#x2F;">Mount external drives in WSL ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

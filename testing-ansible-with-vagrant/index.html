@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - Testing Ansible with Vagrant</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;testing-ansible-with-vagrant&#x2F;">Testing Ansible with Vagrant</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2018-07-01</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>When writing Ansible playbooks, it makes sense to test them on vanilla systems.
+This way you can ensure that what you wrote actually works and you do not
+forget any prerequisites your playbook requires. A testing environment can be
+set up with Vagrant easily, as described in the following post.<sup class="footnote-reference"><a href="#reference">1</a></sup></p>
+<span id="continue-reading"></span>
+<p>By default Vagrant uses <code>virtualbox</code> as its <a href="https://www.vagrantup.com/docs/providers/default.html">default
+provider</a>. Perhaps you would like to use a different
+provider. In this case define your provider with the environment variable
+<code>DEFAULT_VAGRANT_PROVIDER</code>. E.g., on Windows it makes sense to use Hyper-V
+(<code>hyperv</code>) instead of VirtualBox since they do not work next to each other.</p>
+<p>In the following, we configure a simple Debian host.</p>
+<pre data-lang="ruby" style="background-color:#2b303b;color:#c0c5ce;" class="language-ruby "><code class="language-ruby" data-lang="ruby"><span style="color:#ebcb8b;">Vagrant</span><span>.configure(</span><span style="color:#d08770;">2</span><span>) </span><span style="color:#b48ead;">do </span><span>|</span><span style="color:#bf616a;">config</span><span>|
+</span><span>    config.vm.box: &quot;</span><span style="color:#a3be8c;">generic/debian9</span><span>&quot;
+</span><span style="color:#b48ead;">end
+</span></code></pre>
+<p>We then download Ansible's Vagrant Dynamic Inventory to configure Ansible hosts
+through the Vagrantfile listed above automatically.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/vagrant.py
+</span><span style="color:#65737e;"># chmod +x vagrant.py
+</span></code></pre>
+<p>To list all available machines run by Vagrant you use <code>./vagrant.py --list all</code>. As you will see in the output, these machines are grouped under
+&quot;vagrant&quot;. Thus, provided a playbook file that sets &quot;vagrant&quot; as its host, you
+can test your playbook with</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># ansible-playbook -i ./vagrant.py playbook-to-test.yml
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/ansible/">#Ansible</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/vagrant/">#Vagrant</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/sysadmin/">#sysadmin</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/automation/">#automation</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;vnc-and-xfce&#x2F;">‹ VNC and two Xfce sessions</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;unattended-upgrades&#x2F;">Unattended Upgrades ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

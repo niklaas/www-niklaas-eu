@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - sysadmin</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/sysadmin/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-07-01T20:09:19+02:00</updated>
+    <id>https://www.niklaas.eu/tags/sysadmin/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Testing Ansible with Vagrant</title>
+        <published>2018-07-01T20:09:19+02:00</published>
+        <updated>2018-07-01T20:09:19+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/testing-ansible-with-vagrant/"/>
+        <id>https://www.niklaas.eu/testing-ansible-with-vagrant/</id>
+        
+        <summary type="html">&lt;p&gt;When writing Ansible playbooks, it makes sense to test them on vanilla systems.
+This way you can ensure that what you wrote actually works and you do not
+forget any prerequisites your playbook requires. A testing environment can be
+set up with Vagrant easily, as described in the following post.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Unattended Upgrades</title>
+        <published>2018-05-10T21:49:31+02:00</published>
+        <updated>2018-05-10T21:49:31+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/unattended-upgrades/"/>
+        <id>https://www.niklaas.eu/unattended-upgrades/</id>
+        
+        <summary type="html">&lt;p&gt;In some cases it makes sense to install upgrades of packages automatically. This
+can reduce time for maintenance a lot. To do so, install the little helpers
+&lt;code&gt;unattended-upgrades&lt;&#x2F;code&gt; and &lt;code&gt;apt-listchanges&lt;&#x2F;code&gt; with the following command:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Using tinc for a simple meshed VPN network</title>
+        <published>2018-05-10T16:44:32+02:00</published>
+        <updated>2018-05-10T16:44:32+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/tinc-for-simple-vpn/"/>
+        <id>https://www.niklaas.eu/tinc-for-simple-vpn/</id>
+        
+        <summary type="html">&lt;p&gt;Accessing your computers from remote at home isn&#x27;t easy since you lack a public
+IP address in most cases. A workaround is to use a server with a public IP
+address as an entrance to a meshed &lt;a href=&quot;https:&#x2F;&#x2F;www.tinc-vpn.org&quot;&gt;tinc&lt;&#x2F;a&gt; virtual private network (VPN).&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Setting up syncthing with systemd on Debian</title>
+        <published>2018-04-10T19:11:53+02:00</published>
+        <updated>2018-04-10T19:11:53+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/syncthing-on-debian/"/>
+        <id>https://www.niklaas.eu/syncthing-on-debian/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.syncthing.org&quot;&gt;Syncthing&lt;&#x2F;a&gt; is a great tool for keeping machines in sync. This is
+quick write-up on how to configure automatic start with systemd on server.
+Important: This is different from setting it up on a client machine. In this
+case you would run it as the user logged in.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Drop Nullmailer for DragonFly Mail Agent (dma)</title>
+        <published>2018-04-08T09:38:19+02:00</published>
+        <updated>2018-04-08T09:38:19+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/from-nullmailer-to-dma/"/>
+        <id>https://www.niklaas.eu/from-nullmailer-to-dma/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;&#x2F;strong&gt; In the previous version of this post, the sequence of the
+credentials in &lt;code&gt;&#x2F;etc&#x2F;dma&#x2F;auth.conf&lt;&#x2F;code&gt; was wrong.&lt;&#x2F;p&gt;
+&lt;p&gt;Not a long time ago, in a &lt;a href=&quot;https:&#x2F;&#x2F;www.niklaas.eu&#x2F;from-nullmailer-to-dma&#x2F;posts&#x2F;2018-04-02-nullmailer-for-system-mail.md&quot;&gt;previous
+post&lt;&#x2F;a&gt;, I recommended to
+use &lt;a href=&quot;http:&#x2F;&#x2F;untroubled.org&#x2F;nullmailer&quot;&gt;nullmailer&lt;&#x2F;a&gt; for a simple send-only mail transfer
+agent to relay system mail. I must revise that advice because of two
+reasons:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Nullmailer for System Mail</title>
+        <published>2018-04-02T17:39:16+02:00</published>
+        <updated>2018-04-02T17:39:16+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/nullmailer-for-system-mail/"/>
+        <id>https://www.niklaas.eu/nullmailer-for-system-mail/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;&#x2F;strong&gt; See this &lt;a href=&quot;https:&#x2F;&#x2F;www.niklaas.eu&#x2F;nullmailer-for-system-mail&#x2F;posts&#x2F;2018-04-08-from-nullmailer-to-dma.md&quot;&gt;updated
+post&lt;&#x2F;a&gt; on why you should &lt;em&gt;not&lt;&#x2F;em&gt;
+use nullmailer but dma for relaying system mail.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Mount external drives in WSL</title>
+        <published>2018-04-02T17:21:25+02:00</published>
+        <updated>2018-04-02T17:21:25+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/wsl-mount/"/>
+        <id>https://www.niklaas.eu/wsl-mount/</id>
+        
+        <summary type="html">&lt;p&gt;Mounting external drives in Windows Subsystem for Linux is quite simple. That
+said I always forget how to do so. Here&#x27;s a short reminder:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>SSH hardening</title>
+        <published>2018-04-02T16:18:24+02:00</published>
+        <updated>2018-04-02T16:18:24+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/ssh-hardening/"/>
+        <id>https://www.niklaas.eu/ssh-hardening/</id>
+        
+        <summary type="html">&lt;p&gt;Often I am unhappy with the default settings of the SSH daemon. Not that they
+provide a security threat to the systems but you can make it even more difficult
+for an attacker to get access to a system. In addition to the default settings I
+always enable the following:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Mounting VirtualBox&#x27;s shared folders</title>
+        <published>2017-09-09T11:18:30+02:00</published>
+        <updated>2017-09-09T11:18:30+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/mounting-vboxsf/"/>
+        <id>https://www.niklaas.eu/mounting-vboxsf/</id>
+        
+        <summary type="html">&lt;p&gt;When mounting VirtualBox folders shared by Windows with &lt;code&gt;mount -t vboxsf &amp;lt;shared folder&amp;gt; &amp;lt;mountpoint&amp;gt;&lt;&#x2F;code&gt; on a Unix machine, the permissions of files and
+folders are often incorrect. Both files and folders are mounted with &lt;code&gt;umask 000&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

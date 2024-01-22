@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      
+    
+
+      <title>Niklaas Baudet von Gersdorff - FreeBSD and bluetooth keyboards</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://www.niklaas.eu/site.css">
+          
+      
+
+      <script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Niklaas&#x27;s Notes</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                            Tags
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;www.niklaas.eu">Niklaas&#x27;s Notes</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;tags">
+                                    Tags
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;freebsd-bluetooth-keyboard&#x2F;">FreeBSD and bluetooth keyboards</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2017-06-09</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<p>It is not quite straighforward to get a bluetooth keyboard running on
+FreeBSD.<sup class="footnote-reference"><a href="#1">1</a></sup> First, the bluetooth service must be started for the device. You
+can check for the device name in <code>/var/log/messages</code> (in this case it is
+<code>ubt0</code>).</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ service bluetooth start ubt0
+</span></code></pre>
+<p>Once started, turn on your bluetooth peripheral and set it to discovery
+mode i.e., prepare it for pairing. Now, search the device on your FreeBSD
+box and note its bluetooth address.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ hccontrol -n ubt0hci inquiry
+</span></code></pre>
+<p>Add the address to <code>/etc/bluetooth/hosts</code> in the following format:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>BD_ADDR     bt-kb
+</span></code></pre>
+<p>And also add it to <code>/etc/bluetooth/hcsecd.conf</code> in the following way:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>device {
+</span><span>    bdaddr  BD_ADDR;
+</span><span>    name    &quot;bt-kb&quot;;
+</span><span>    key     nokey;
+</span><span>    pin     &quot;1234&quot;;
+</span><span>}
+</span></code></pre>
+<p><code>BD_ADDR</code> is the address of the bluetooth device you found with the
+previous command and <code>bt-kb</code> is an arbitrary name chosen for the device.
+You can choose whatever name you prefer.</p>
+<p>Depending on your device you need to provide a <code>pin</code>. For some devices the
+bluetooth pin is hardcoded, for others you need to provide the pin chosen
+here during pairing.</p>
+<p>Subsequently enable the following services in <code>/etc/rc.conf</code>:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>hcsecd_enable=&quot;YES&quot;
+</span><span>bthidd_enable=&quot;YES&quot;
+</span><span>sdpd_enable=&quot;YES&quot;
+</span></code></pre>
+<p>Start these services. Then, register your keyboard with the following
+command:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ bthidcontrol -a BD_ADDR query &gt;&gt; /etc/bluetooth/bthidd.conf
+</span></code></pre>
+<p>You further need to load the following kernel module:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ kldload vkbd
+</span></code></pre>
+<p>To make this permanent, add the following line to <code>/boot/loader.conf</code>.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>vkbd_load=&quot;YES&quot;
+</span></code></pre>
+<p>Make sure that your keyboard is in discovery mode. FreeBSD will try to
+connect your bluetooth peripheral. If necessary issue the pin you set in
+<code>hcsecd.conf</code> on your keyboard. (I had to subsequently press <code>1</code>, <code>2</code>,
+<code>3</code>, <code>4</code>, and <code>ENTER</code>.)</p>
+<p>If you encounter problems, run <code>hcsecd</code> and/or <code>bthidd</code> in foreground with</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ hcsecd -d
+</span><span>$ bthidd -d
+</span></code></pre>
+<p>and inspect the output. Do not forget to stop their already running
+instances beforehand.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>The <a href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/network-bluetooth.html">FreeBSD Handbook</a> provides some insight but fails to mention how to initate the pairing process <em>from</em> the FreeBSD box itself. This I found out in the <a href="https://forums.freebsd.org/threads/39679/page-2#post-220632">forums</a>.</p>
+</div>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://www.niklaas.eu/tags/freebsd/">#FreeBSD</a>
+                    
+                        <a href="https://www.niklaas.eu/tags/bluetooth/">#bluetooth</a>
+                    
+                </div>
+            
+            
+                <div class="post-nav">
+                    
+                        <a class="previous" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;git-hook-deployment&#x2F;">‹ Easy deployment with git hooks</a>
+                    
+                    
+                        <a class="next" href="https:&#x2F;&#x2F;www.niklaas.eu&#x2F;revealjs-remotes&#x2F;">reveal.js and remote pointers ›</a>
+                    
+                </div>
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://www.niklaas.eu/even.js" ></script>
+      
+    </body>
+
+</html>

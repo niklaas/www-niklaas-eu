@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - bluetooth</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/bluetooth/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-11-04T00:00:00+00:00</updated>
+    <id>https://www.niklaas.eu/tags/bluetooth/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Bluetooth Headset on Debian</title>
+        <published>2018-11-04T00:00:00+00:00</published>
+        <updated>2018-11-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/bluetooth-headset-on-debian/"/>
+        <id>https://www.niklaas.eu/bluetooth-headset-on-debian/</id>
+        
+        <summary type="html">&lt;p&gt;I had some trouble connection my new &lt;a href=&quot;https:&#x2F;&#x2F;www.niklaas.eu&#x2F;bluetooth-headset-on-debian&#x2F;rockster&quot;&gt;Teufel Rockster XS&lt;&#x2F;a&gt; (actually
+not a headset but a portable speaker) with my Debian notebook. Pairing worked
+without any problem but connection to the audio sink of the speaker -- to
+actually stream audio to the device -- returned the error:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Connection Failed: blueman.bluez.errors.DBusFailedError: Protocol Not available&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>FreeBSD and bluetooth keyboards</title>
+        <published>2017-06-09T12:09:15+02:00</published>
+        <updated>2017-06-09T12:09:15+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/freebsd-bluetooth-keyboard/"/>
+        <id>https://www.niklaas.eu/freebsd-bluetooth-keyboard/</id>
+        
+        <content type="html" xml:base="https://www.niklaas.eu/freebsd-bluetooth-keyboard/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;It is not quite straighforward to get a bluetooth keyboard running on
+FreeBSD.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; First, the bluetooth service must be started for the device. You
+can check for the device name in &lt;code&gt;&#x2F;var&#x2F;log&#x2F;messages&lt;&#x2F;code&gt; (in this case it is
+&lt;code&gt;ubt0&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ service bluetooth start ubt0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Once started, turn on your bluetooth peripheral and set it to discovery
+mode i.e., prepare it for pairing. Now, search the device on your FreeBSD
+box and note its bluetooth address.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ hccontrol -n ubt0hci inquiry
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Add the address to &lt;code&gt;&#x2F;etc&#x2F;bluetooth&#x2F;hosts&lt;&#x2F;code&gt; in the following format:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;BD_ADDR     bt-kb
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And also add it to &lt;code&gt;&#x2F;etc&#x2F;bluetooth&#x2F;hcsecd.conf&lt;&#x2F;code&gt; in the following way:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;device {
+&lt;&#x2F;span&gt;&lt;span&gt;    bdaddr  BD_ADDR;
+&lt;&#x2F;span&gt;&lt;span&gt;    name    &amp;quot;bt-kb&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    key     nokey;
+&lt;&#x2F;span&gt;&lt;span&gt;    pin     &amp;quot;1234&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;BD_ADDR&lt;&#x2F;code&gt; is the address of the bluetooth device you found with the
+previous command and &lt;code&gt;bt-kb&lt;&#x2F;code&gt; is an arbitrary name chosen for the device.
+You can choose whatever name you prefer.&lt;&#x2F;p&gt;
+&lt;p&gt;Depending on your device you need to provide a &lt;code&gt;pin&lt;&#x2F;code&gt;. For some devices the
+bluetooth pin is hardcoded, for others you need to provide the pin chosen
+here during pairing.&lt;&#x2F;p&gt;
+&lt;p&gt;Subsequently enable the following services in &lt;code&gt;&#x2F;etc&#x2F;rc.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;hcsecd_enable=&amp;quot;YES&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;bthidd_enable=&amp;quot;YES&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;sdpd_enable=&amp;quot;YES&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Start these services. Then, register your keyboard with the following
+command:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ bthidcontrol -a BD_ADDR query &amp;gt;&amp;gt; &#x2F;etc&#x2F;bluetooth&#x2F;bthidd.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You further need to load the following kernel module:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ kldload vkbd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To make this permanent, add the following line to &lt;code&gt;&#x2F;boot&#x2F;loader.conf&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;vkbd_load=&amp;quot;YES&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Make sure that your keyboard is in discovery mode. FreeBSD will try to
+connect your bluetooth peripheral. If necessary issue the pin you set in
+&lt;code&gt;hcsecd.conf&lt;&#x2F;code&gt; on your keyboard. (I had to subsequently press &lt;code&gt;1&lt;&#x2F;code&gt;, &lt;code&gt;2&lt;&#x2F;code&gt;,
+&lt;code&gt;3&lt;&#x2F;code&gt;, &lt;code&gt;4&lt;&#x2F;code&gt;, and &lt;code&gt;ENTER&lt;&#x2F;code&gt;.)&lt;&#x2F;p&gt;
+&lt;p&gt;If you encounter problems, run &lt;code&gt;hcsecd&lt;&#x2F;code&gt; and&#x2F;or &lt;code&gt;bthidd&lt;&#x2F;code&gt; in foreground with&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ hcsecd -d
+&lt;&#x2F;span&gt;&lt;span&gt;$ bthidd -d
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and inspect the output. Do not forget to stop their already running
+instances beforehand.&lt;&#x2F;p&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;www.freebsd.org&#x2F;doc&#x2F;en_US.ISO8859-1&#x2F;books&#x2F;handbook&#x2F;network-bluetooth.html&quot;&gt;FreeBSD Handbook&lt;&#x2F;a&gt; provides some insight but fails to mention how to initate the pairing process &lt;em&gt;from&lt;&#x2F;em&gt; the FreeBSD box itself. This I found out in the &lt;a href=&quot;https:&#x2F;&#x2F;forums.freebsd.org&#x2F;threads&#x2F;39679&#x2F;page-2#post-220632&quot;&gt;forums&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>

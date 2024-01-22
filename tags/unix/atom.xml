@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - Unix</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/unix/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-04-08T09:38:19+02:00</updated>
+    <id>https://www.niklaas.eu/tags/unix/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Drop Nullmailer for DragonFly Mail Agent (dma)</title>
+        <published>2018-04-08T09:38:19+02:00</published>
+        <updated>2018-04-08T09:38:19+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/from-nullmailer-to-dma/"/>
+        <id>https://www.niklaas.eu/from-nullmailer-to-dma/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;&#x2F;strong&gt; In the previous version of this post, the sequence of the
+credentials in &lt;code&gt;&#x2F;etc&#x2F;dma&#x2F;auth.conf&lt;&#x2F;code&gt; was wrong.&lt;&#x2F;p&gt;
+&lt;p&gt;Not a long time ago, in a &lt;a href=&quot;https:&#x2F;&#x2F;www.niklaas.eu&#x2F;from-nullmailer-to-dma&#x2F;posts&#x2F;2018-04-02-nullmailer-for-system-mail.md&quot;&gt;previous
+post&lt;&#x2F;a&gt;, I recommended to
+use &lt;a href=&quot;http:&#x2F;&#x2F;untroubled.org&#x2F;nullmailer&quot;&gt;nullmailer&lt;&#x2F;a&gt; for a simple send-only mail transfer
+agent to relay system mail. I must revise that advice because of two
+reasons:&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Nullmailer for System Mail</title>
+        <published>2018-04-02T17:39:16+02:00</published>
+        <updated>2018-04-02T17:39:16+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/nullmailer-for-system-mail/"/>
+        <id>https://www.niklaas.eu/nullmailer-for-system-mail/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;&#x2F;strong&gt; See this &lt;a href=&quot;https:&#x2F;&#x2F;www.niklaas.eu&#x2F;nullmailer-for-system-mail&#x2F;posts&#x2F;2018-04-08-from-nullmailer-to-dma.md&quot;&gt;updated
+post&lt;&#x2F;a&gt; on why you should &lt;em&gt;not&lt;&#x2F;em&gt;
+use nullmailer but dma for relaying system mail.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Niklaas Baudet von Gersdorff - linux</title>
+    <link rel="self" type="application/atom+xml" href="https://www.niklaas.eu/tags/linux/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.niklaas.eu"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-09-09T11:18:30+02:00</updated>
+    <id>https://www.niklaas.eu/tags/linux/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Mounting VirtualBox&#x27;s shared folders</title>
+        <published>2017-09-09T11:18:30+02:00</published>
+        <updated>2017-09-09T11:18:30+02:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.niklaas.eu/mounting-vboxsf/"/>
+        <id>https://www.niklaas.eu/mounting-vboxsf/</id>
+        
+        <summary type="html">&lt;p&gt;When mounting VirtualBox folders shared by Windows with &lt;code&gt;mount -t vboxsf &amp;lt;shared folder&amp;gt; &amp;lt;mountpoint&amp;gt;&lt;&#x2F;code&gt; on a Unix machine, the permissions of files and
+folders are often incorrect. Both files and folders are mounted with &lt;code&gt;umask 000&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
