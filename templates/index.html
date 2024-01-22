@@ -1,2 +1,12 @@
-{% extends "even/templates/index.html" %}
-{% block extra_head %}<script defer data-domain="niklaas.eu" src="https://plausible.io/js/script.js"></script>{% endblock %}
+{% extends "base.html" %}
+
+{% block main -%}
+{% set blog_posts = get_section(path="blog/_index.md") %}
+{% for post in blog_posts.pages | slice(end=5) %}
+<article>
+  <h1>{{ post.title }}</h1>
+  {{ post.summary | safe }}
+</article>
+{% endfor %}
+<p>Read all posts</p>
+{% endblock title %}
