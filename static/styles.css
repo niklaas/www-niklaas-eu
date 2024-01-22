@@ -3,6 +3,15 @@
  * no longer need CSS pre-processors these days
  */
 
+:root {
+  --background-color-light: whitesmoke;
+  --background-color-dark: #222;
+  --color-light: #222;
+  --color-dark: whitesmoke;
+  --link-color-light: navy;
+  --link-color-dark: dodgerblue;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,17 +19,17 @@
 
 @media (prefers-color-scheme: light) {
   body {
-    --background-color: whitesmoke;
-    --color: #222;
-    --link-color: navy;
+    --background-color: var(--background-color-light);
+    --color: var(--color-light);
+    --link-color: var(--link-color-light);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    --background-color: #222;
-    --color: whitesmoke;
-    --link-color: dodgerblue;
+    --background-color: var(--background-color-dark);
+    --color: var(--color-dark);
+    --link-color: var(--link-color-dark);
   }
 }
 
