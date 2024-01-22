@@ -4,5 +4,9 @@ compile_sass = true
 build_search_index = true
 
 taxonomies = [
-    {name = "tags", feed = true},
+    {name = "tags", feed = true, render = false},
 ]
+
+[extra]
+theme_title = "Niklaas's Notes"
+
